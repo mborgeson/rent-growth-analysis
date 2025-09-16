@@ -1,0 +1,1926 @@
+{
+  "machine_learning": {
+    "agent_id": "an-ml-001",
+    "methodology": "Machine learning with focus on non-linear patterns",
+    "execution_time": 9.5367431640625e-06,
+    "findings": [
+      {
+        "variable_pair": [
+          "fed_funds",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.4757148244899161,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "fed_funds has moderate predictive value for rent_growth. Non-linear effects present. Contributing 3.8% to model predictions.",
+        "evidence": {
+          "random_forest_importance": 0.037874206999668286,
+          "mutual_information": 0.6433172197223112,
+          "nonlinear_correlation": 0.2948197967709126
+        }
+      },
+      {
+        "variable_pair": [
+          "treasury_10y",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.49828291943399394,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "treasury_10y has moderate predictive value for rent_growth. Non-linear effects present. Contributing 8.4% to model predictions.",
+        "evidence": {
+          "random_forest_importance": 0.0841183755358259,
+          "mutual_information": 0.6341773672475759,
+          "nonlinear_correlation": 0.31194914271889257
+        }
+      },
+      {
+        "variable_pair": [
+          "unemployment",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.296573468605726,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "unemployment shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+        "evidence": {
+          "random_forest_importance": 0.03842757382007743,
+          "mutual_information": 0.13695977653726976,
+          "nonlinear_correlation": 0.1431116571737959
+        }
+      },
+      {
+        "variable_pair": [
+          "gdp_growth",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.5429924216818492,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "gdp_growth has moderate predictive value for rent_growth. Non-linear effects present. Contributing 21.8% to model predictions.",
+        "evidence": {
+          "random_forest_importance": 0.2184536116484624,
+          "mutual_information": 0.3774663085757827,
+          "nonlinear_correlation": 0.502891948362032
+        }
+      },
+      {
+        "variable_pair": [
+          "vacancy_rate",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.29891367777752065,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "vacancy_rate shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+        "evidence": {
+          "random_forest_importance": 0.034316527699215185,
+          "mutual_information": 0.1561850419390859,
+          "nonlinear_correlation": 0.1385002335385218
+        }
+      },
+      {
+        "variable_pair": [
+          "new_supply",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.6735737115772373,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "new_supply has moderate predictive value for rent_growth. Non-linear effects present. Contributing 10.2% to model predictions.",
+        "evidence": {
+          "random_forest_importance": 0.10232086818294339,
+          "mutual_information": 0.8105285811906321,
+          "nonlinear_correlation": 0.6938955592785309
+        }
+      },
+      {
+        "variable_pair": [
+          "absorption",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.36750521556082394,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "absorption shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+        "evidence": {
+          "random_forest_importance": 0.027064654846050498,
+          "mutual_information": 0.20905231606915606,
+          "nonlinear_correlation": 0.344411706668953
+        }
+      },
+      {
+        "variable_pair": [
+          "cpi_change",
+          "rent_growth"
+        ],
+        "relationship_type": "none",
+        "confidence": 0.22774368258743913,
+        "lag_structure": null,
+        "direction": "none",
+        "interpretation": "cpi_change appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+        "evidence": {
+          "random_forest_importance": 0.0324839554619703,
+          "mutual_information": 0.019851865782178672,
+          "nonlinear_correlation": 0.03484451176674013
+        }
+      },
+      {
+        "variable_pair": [
+          "supply_demand_balance",
+          "rent_growth"
+        ],
+        "relationship_type": "strong",
+        "confidence": 1.0,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "supply_demand_balance shows strong predictive power for rent_growth. Non-linear patterns detected, suggesting complex relationship. Feature importance: 1.00, Information content: 1.00.",
+        "evidence": {
+          "random_forest_importance": 1.0,
+          "mutual_information": 1.0,
+          "nonlinear_correlation": 0.7661652541958431
+        }
+      },
+      {
+        "variable_pair": [
+          "real_rates",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.44866621805207907,
+        "lag_structure": null,
+        "direction": "bidirectional",
+        "interpretation": "real_rates shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+        "evidence": {
+          "random_forest_importance": 0.047581689272081854,
+          "mutual_information": 0.5282058973621885,
+          "nonlinear_correlation": 0.28793947501599493
+        }
+      },
+      {
+        "variable_pair": [
+          "housing_starts",
+          "rent_growth"
+        ],
+        "relationship_type": "none",
+        "confidence": 0.2534038185313893,
+        "lag_structure": null,
+        "direction": "none",
+        "interpretation": "housing_starts appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+        "evidence": {
+          "random_forest_importance": 0.03592215864577504,
+          "mutual_information": 0.017694660467536472,
+          "nonlinear_correlation": 0.1384996340893783
+        }
+      },
+      {
+        "variable_pair": [
+          "sp500_returns",
+          "rent_growth"
+        ],
+        "relationship_type": "none",
+        "confidence": 0.22405970522165664,
+        "lag_structure": null,
+        "direction": "none",
+        "interpretation": "sp500_returns appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+        "evidence": {
+          "random_forest_importance": 0.030793659733700466,
+          "mutual_information": 0.0,
+          "nonlinear_correlation": 0.05485607271235847
+        }
+      }
+    ]
+  },
+  "statistical": {
+    "agent_id": "an-stat-001",
+    "methodology": "Classical statistics with rigorous hypothesis testing",
+    "execution_time": 1.049041748046875e-05,
+    "findings": [
+      {
+        "variable_pair": [
+          "fed_funds",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.5940551590178044,
+        "lag_structure": -12,
+        "direction": "bidirectional",
+        "interpretation": "fed_funds shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.15409558346903196,
+              "p_value": 0.0006360054875774565,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.16897166894209106,
+              "p_value": 0.00017674111007079217,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.09825574886988755,
+              "p_value": 0.0011916522500125268,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.0778688524590164,
+            "ks_p_value": 0.10373014165646395,
+            "similar_distribution": "True",
+            "skew_difference": 0.38397409329573856,
+            "kurtosis_difference": 1.1010252189926064
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.21946203770821007,
+              "-11": -0.21586452551815014,
+              "-10": -0.21124412741448098,
+              "-9": -0.2111132991182102,
+              "-8": -0.20535968620282327,
+              "-7": -0.19826524153561853,
+              "-6": -0.19021959810114736,
+              "-5": -0.18238793960377472,
+              "-4": -0.17781365790496928,
+              "-3": -0.16881358105788158,
+              "-2": -0.1658506708549737,
+              "-1": -0.15967633953676688,
+              "0": -0.1540955834690318,
+              "1": -0.14327062085681494,
+              "2": -0.13079689431315092,
+              "3": -0.12030044778512572,
+              "4": -0.11466284449707013,
+              "5": -0.10743947434462324,
+              "6": -0.09807039913445807,
+              "7": -0.08382306897989523,
+              "8": -0.07236120482970765,
+              "9": -0.06274509415761113,
+              "10": -0.05153679033101897,
+              "11": -0.04244251899186756,
+              "12": -0.03247083990168226
+            },
+            "optimal_lag": -12,
+            "max_correlation": -0.21946203770821007,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.14307399664767653,
+            "correlation_volatility": 0.48449687910455697,
+            "correlation_range": 1.782575399242698,
+            "is_stable": "False",
+            "structural_break_p_value": 8.465078608031995e-30,
+            "coefficient_of_variation": 3.3863377724580044
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "treasury_10y",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.5948091462968401,
+        "lag_structure": -12,
+        "direction": "bidirectional",
+        "interpretation": "treasury_10y shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.16555333447250126,
+              "p_value": 0.00023954029989916757,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.18250493663547593,
+              "p_value": 5.0040833288283964e-05,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.10815860232116656,
+              "p_value": 0.00035552802109708103,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.0860655737704918,
+            "ks_p_value": 0.05380513640536238,
+            "similar_distribution": "True",
+            "skew_difference": 0.3952693050587725,
+            "kurtosis_difference": 1.0998595268215958
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.22122134135929347,
+              "-11": -0.21824359049597944,
+              "-10": -0.2153250360029874,
+              "-9": -0.21401619136054617,
+              "-8": -0.21143579572993573,
+              "-7": -0.2079062526554311,
+              "-6": -0.20058661455102084,
+              "-5": -0.19243787939342083,
+              "-4": -0.18516186069255675,
+              "-3": -0.17873199056309846,
+              "-2": -0.17469541859236537,
+              "-1": -0.16999453247851534,
+              "0": -0.16555333447250137,
+              "1": -0.15805914937164056,
+              "2": -0.14831763521421062,
+              "3": -0.13628853190570897,
+              "4": -0.12567824877316006,
+              "5": -0.11661335364805366,
+              "6": -0.10936601966258,
+              "7": -0.0999224174734324,
+              "8": -0.08908043703781403,
+              "9": -0.07776390363403941,
+              "10": -0.06676596324935426,
+              "11": -0.05755605237988092,
+              "12": -0.047119242974731856
+            },
+            "optimal_lag": -12,
+            "max_correlation": -0.22122134135929347,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.15422516012147972,
+            "correlation_volatility": 0.4933136856408231,
+            "correlation_range": 1.7783094303523306,
+            "is_stable": "False",
+            "structural_break_p_value": 1.626792825122081e-33,
+            "coefficient_of_variation": 3.1986589299194175
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "unemployment",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.6031708798865113,
+        "lag_structure": -11,
+        "direction": "bidirectional",
+        "interpretation": "unemployment shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": 0.14119669017093975,
+              "p_value": 0.0017671015634568895,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": 0.14693145936620378,
+              "p_value": 0.0011331972722124657,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": 0.09640906528319043,
+              "p_value": 0.0014566998423706295,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.09631147540983606,
+            "ks_p_value": 0.02158274502195421,
+            "similar_distribution": "False",
+            "skew_difference": 0.43785544298818335,
+            "kurtosis_difference": 1.1913121852057615
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": 0.2383539142000506,
+              "-11": 0.2407320530685263,
+              "-10": 0.22844896214908506,
+              "-9": 0.22188032853552472,
+              "-8": 0.2081552284210936,
+              "-7": 0.20682696178989954,
+              "-6": 0.2061004892811486,
+              "-5": 0.19979199022391822,
+              "-4": 0.19927119816802183,
+              "-3": 0.18935990711520692,
+              "-2": 0.1807138449947503,
+              "-1": 0.15215473973237262,
+              "0": 0.1411966901709398,
+              "1": 0.12725561644060168,
+              "2": 0.13018773624741167,
+              "3": 0.12440843227396363,
+              "4": 0.11967601811449598,
+              "5": 0.10975748556573124,
+              "6": 0.08842175126313899,
+              "7": 0.08047501935833785,
+              "8": 0.06723442264553826,
+              "9": 0.05892055638742417,
+              "10": 0.03378868370967246,
+              "11": 0.019869539423818985,
+              "12": -0.0007443985520132181
+            },
+            "optimal_lag": -11,
+            "max_correlation": 0.2407320530685263,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": 0.1009963092083338,
+            "correlation_volatility": 0.45307809335011934,
+            "correlation_range": 1.7433490318270461,
+            "is_stable": "False",
+            "structural_break_p_value": 1.3549156299756513e-29,
+            "coefficient_of_variation": 4.486085649085612
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "gdp_growth",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7189058196047197,
+        "lag_structure": 1,
+        "direction": "bidirectional",
+        "interpretation": "gdp_growth has moderate statistical association with rent_growth. Correlation coefficient: 0.50. Relationship strength varies across periods.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": 0.5017231175864363,
+              "p_value": 1.7867134568109817e-32,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": 0.49210967050739957,
+              "p_value": 3.974405572420154e-31,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": 0.34049500535596067,
+              "p_value": 2.52852075012247e-29,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.07991803278688525,
+            "ks_p_value": 0.08857865467208863,
+            "similar_distribution": "True",
+            "skew_difference": 0.4631705657293507,
+            "kurtosis_difference": 0.9185153027159383
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": 0.24907353871259966,
+              "-11": 0.2844034506882097,
+              "-10": 0.31406721123595266,
+              "-9": 0.33868214199121616,
+              "-8": 0.3553036060820206,
+              "-7": 0.37352806288082524,
+              "-6": 0.398011409189662,
+              "-5": 0.42303439495682965,
+              "-4": 0.43488304235260145,
+              "-3": 0.44055044363199874,
+              "-2": 0.4431626475141959,
+              "-1": 0.4839391609343452,
+              "0": 0.5017231175864362,
+              "1": 0.5107802457443459,
+              "2": 0.46952927070037037,
+              "3": 0.47218938441958697,
+              "4": 0.47059958473526037,
+              "5": 0.4791818875477308,
+              "6": 0.4708209756696153,
+              "7": 0.46217167653496216,
+              "8": 0.45500594394922256,
+              "9": 0.4460105719355526,
+              "10": 0.4374526988242381,
+              "11": 0.42944987893333086,
+              "12": 0.41445287376874884
+            },
+            "optimal_lag": 1,
+            "max_correlation": 0.5107802457443459,
+            "lead_lag_pattern": "y_leads"
+          },
+          "stability": {
+            "mean_correlation": 0.561819974481632,
+            "correlation_volatility": 0.28430182276464067,
+            "correlation_range": 1.164351464053592,
+            "is_stable": "False",
+            "structural_break_p_value": 7.154909981110387e-06,
+            "coefficient_of_variation": 0.5060372284323892
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "vacancy_rate",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.5861543420622094,
+        "lag_structure": -11,
+        "direction": "bidirectional",
+        "interpretation": "vacancy_rate shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.1372387266786594,
+              "p_value": 0.002379044280004215,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.13493453418234128,
+              "p_value": 0.002818884370418341,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.09003004368013016,
+              "p_value": 0.002953317293722974,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.06967213114754098,
+            "ks_p_value": 0.18712159299170722,
+            "similar_distribution": "True",
+            "skew_difference": 0.43881029717473763,
+            "kurtosis_difference": 0.8314309950563867
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.1970376376986429,
+              "-11": -0.2010267981451553,
+              "-10": -0.19552424305464766,
+              "-9": -0.19839312689412905,
+              "-8": -0.19582507271053345,
+              "-7": -0.1832348387872995,
+              "-6": -0.16813685753843327,
+              "-5": -0.1616585782768801,
+              "-4": -0.15941769908757447,
+              "-3": -0.15380198829593872,
+              "-2": -0.14079615497275003,
+              "-1": -0.14316425139304104,
+              "0": -0.13723872667865933,
+              "1": -0.12193832376953513,
+              "2": -0.10870513678173604,
+              "3": -0.0946287833816465,
+              "4": -0.09610163517325743,
+              "5": -0.06662695027627434,
+              "6": -0.05042638431891693,
+              "7": -0.03105971059600063,
+              "8": -0.021692074347326777,
+              "9": -0.011179271977085816,
+              "10": 0.017798952448901426,
+              "11": 0.024535375342027665,
+              "12": 0.029335771419805715
+            },
+            "optimal_lag": -11,
+            "max_correlation": -0.2010267981451553,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.12756449734956848,
+            "correlation_volatility": 0.39168597363311775,
+            "correlation_range": 1.555162167998821,
+            "is_stable": "False",
+            "structural_break_p_value": 3.363572162029873e-26,
+            "coefficient_of_variation": 3.0704936073221845
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "new_supply",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7884798036520924,
+        "lag_structure": 0,
+        "direction": "bidirectional",
+        "interpretation": "new_supply has moderate statistical association with rent_growth. Correlation coefficient: -0.67. Relationship strength varies across periods.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.6731195418548819,
+              "p_value": 1.1035945722287857e-65,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.6665698623101308,
+              "p_value": 5.3301831911592824e-64,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.4749257323840406,
+              "p_value": 2.0465919832447398e-55,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.0860655737704918,
+            "ks_p_value": 0.05380513640536238,
+            "similar_distribution": "True",
+            "skew_difference": 0.5831333162342378,
+            "kurtosis_difference": 0.8492822162499287
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.5302921126719752,
+              "-11": -0.5630913161247592,
+              "-10": -0.5837926333399148,
+              "-9": -0.5827574218123174,
+              "-8": -0.5635277076656863,
+              "-7": -0.5665070470135865,
+              "-6": -0.5769687129509377,
+              "-5": -0.5884842112477532,
+              "-4": -0.5858274423889124,
+              "-3": -0.5845117447596403,
+              "-2": -0.588249207473547,
+              "-1": -0.660682492415264,
+              "0": -0.6731195418548821,
+              "1": -0.6724528677553211,
+              "2": -0.6113714111393641,
+              "3": -0.6050753091543183,
+              "4": -0.612569845697952,
+              "5": -0.6082313268877804,
+              "6": -0.5936323554223086,
+              "7": -0.5717374715842315,
+              "8": -0.5639819644480469,
+              "9": -0.5688325837240767,
+              "10": -0.5697489997609065,
+              "11": -0.5546666379401617,
+              "12": -0.5274829707219848
+            },
+            "optimal_lag": 0,
+            "max_correlation": -0.6731195418548821,
+            "lead_lag_pattern": "contemporaneous"
+          },
+          "stability": {
+            "mean_correlation": -0.4642851248829885,
+            "correlation_volatility": 0.31298709155079557,
+            "correlation_range": 1.1564350638913155,
+            "is_stable": "False",
+            "structural_break_p_value": 1.2613886018716285e-13,
+            "coefficient_of_variation": 0.6741268991326744
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "absorption",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.6542978353021592,
+        "lag_structure": -1,
+        "direction": "bidirectional",
+        "interpretation": "absorption shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": 0.34436224891763406,
+              "p_value": 4.940891012318265e-15,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": 0.33992201854069365,
+              "p_value": 1.1545789051143676e-14,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": 0.2308397923112704,
+              "p_value": 2.503104655527775e-14,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.09836065573770492,
+            "ks_p_value": 0.017757454229241274,
+            "similar_distribution": "False",
+            "skew_difference": 0.5522589983040516,
+            "kurtosis_difference": 0.0594504693003608
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": 0.1536021701943373,
+              "-11": 0.14497119287253726,
+              "-10": 0.16911043718646027,
+              "-9": 0.15474591234015578,
+              "-8": 0.17738887183049695,
+              "-7": 0.16569447997992184,
+              "-6": 0.179632764038145,
+              "-5": 0.18015844567647668,
+              "-4": 0.17858300261167243,
+              "-3": 0.21101998712276046,
+              "-2": 0.20668590081557836,
+              "-1": 0.36002828237170487,
+              "0": 0.3443622489176343,
+              "1": 0.3540519443510307,
+              "2": 0.1959767143895716,
+              "3": 0.20107649612948858,
+              "4": 0.1871320717141187,
+              "5": 0.19869812353814437,
+              "6": 0.19891792950360726,
+              "7": 0.19734905113917808,
+              "8": 0.2156694683300323,
+              "9": 0.195587313165094,
+              "10": 0.2119160431556106,
+              "11": 0.1984588573843323,
+              "12": 0.22032954751681896
+            },
+            "optimal_lag": -1,
+            "max_correlation": 0.36002828237170487,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": 0.42650428543226904,
+            "correlation_volatility": 0.16525896650100186,
+            "correlation_range": 0.7783141236644127,
+            "is_stable": "False",
+            "structural_break_p_value": 0.001151659910131598,
+            "coefficient_of_variation": 0.3874731676693687
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "cpi_change",
+          "rent_growth"
+        ],
+        "relationship_type": "none",
+        "confidence": 0.14890714304696856,
+        "lag_structure": 10,
+        "direction": "none",
+        "interpretation": "cpi_change is statistically independent of rent_growth. No significant correlation or pattern detected.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.03277568447899501,
+              "p_value": 0.47006343982014426,
+              "significant": "False"
+            },
+            "spearman": {
+              "coefficient": -0.0007757772260646383,
+              "p_value": 0.9863619984215455,
+              "significant": "False"
+            },
+            "kendall": {
+              "coefficient": 0.00023563767341668634,
+              "p_value": 0.9937924372398593,
+              "significant": "False"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.0778688524590164,
+            "ks_p_value": 0.10373014165646395,
+            "similar_distribution": "True",
+            "skew_difference": 0.4359040657945694,
+            "kurtosis_difference": 0.09104678595388238
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.042389108404800965,
+              "-11": -0.029766746827033858,
+              "-10": -0.03462933030373754,
+              "-9": -0.04573914005807536,
+              "-8": -0.04297577477716041,
+              "-7": -0.05179590446116277,
+              "-6": -0.02932198384217002,
+              "-5": -0.056980107370584884,
+              "-4": -0.07132950285018903,
+              "-3": -0.08587943655785536,
+              "-2": -0.06253377978004807,
+              "-1": -0.0380784142360831,
+              "0": -0.032775684478994975,
+              "1": -0.037853364327419446,
+              "2": -0.04843917776818349,
+              "3": -0.054073075557348485,
+              "4": -0.0522287577479269,
+              "5": -0.048241596390255215,
+              "6": -0.05845805905303019,
+              "7": -0.06564830515483958,
+              "8": -0.08829740919470334,
+              "9": -0.09294160832470329,
+              "10": -0.1141166671095933,
+              "11": -0.09355527742946008,
+              "12": -0.08790957348536423
+            },
+            "optimal_lag": 10,
+            "max_correlation": -0.1141166671095933,
+            "lead_lag_pattern": "y_leads"
+          },
+          "stability": {
+            "mean_correlation": 0.0378864706790274,
+            "correlation_volatility": 0.13817902450648434,
+            "correlation_range": 0.6255119475135853,
+            "is_stable": "False",
+            "structural_break_p_value": 1.9284774560838436e-44,
+            "coefficient_of_variation": 3.6471865029902433
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "supply_demand_balance",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.8,
+        "lag_structure": 0,
+        "direction": "bidirectional",
+        "interpretation": "supply_demand_balance has moderate statistical association with rent_growth. Correlation coefficient: 0.76. Relationship strength varies across periods.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": 0.7631942927761233,
+              "p_value": 3.1868787348116134e-94,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": 0.7573389447850161,
+              "p_value": 5.4120725319368974e-92,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": 0.5572470903274911,
+              "p_value": 1.3421859137444159e-75,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.03483606557377049,
+            "ks_p_value": 0.9289688595778146,
+            "similar_distribution": "True",
+            "skew_difference": 0.3707721975286067,
+            "kurtosis_difference": 0.9157471727281843
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": 0.5324646689935272,
+              "-11": 0.5612774146286265,
+              "-10": 0.5947334435481101,
+              "-9": 0.583860141137463,
+              "-8": 0.5768284958315624,
+              "-7": 0.5679718458344777,
+              "-6": 0.5832097431455674,
+              "-5": 0.5930490962654236,
+              "-4": 0.5932201742759002,
+              "-3": 0.6098397406219412,
+              "-2": 0.612414768042451,
+              "-1": 0.7606040707556517,
+              "0": 0.7631942927761236,
+              "1": 0.7617776465484639,
+              "2": 0.6138076718859782,
+              "3": 0.6089632961284246,
+              "4": 0.6076508196973123,
+              "5": 0.612423345356043,
+              "6": 0.5998758618998751,
+              "7": 0.5813424287436233,
+              "8": 0.5833854531879763,
+              "9": 0.5794478855448517,
+              "10": 0.5867530245465151,
+              "11": 0.5675997190348396,
+              "12": 0.5519074608326325
+            },
+            "optimal_lag": 0,
+            "max_correlation": 0.7631942927761236,
+            "lead_lag_pattern": "contemporaneous"
+          },
+          "stability": {
+            "mean_correlation": 0.6245251060829075,
+            "correlation_volatility": 0.17716366280932797,
+            "correlation_range": 0.7499804099866747,
+            "is_stable": "False",
+            "structural_break_p_value": 3.5197928721274707e-12,
+            "coefficient_of_variation": 0.2836774071750592
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "real_rates",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.5932851624583688,
+        "lag_structure": -12,
+        "direction": "bidirectional",
+        "interpretation": "real_rates shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.15262456016067827,
+              "p_value": 0.0007175633155487672,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.16933891012489702,
+              "p_value": 0.00017100152772409164,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.09901831662216898,
+              "p_value": 0.0010780968839429986,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.0778688524590164,
+            "ks_p_value": 0.10373014165646395,
+            "similar_distribution": "True",
+            "skew_difference": 0.3879168218431174,
+            "kurtosis_difference": 1.102267418733096
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.21766537906952735,
+              "-11": -0.21480952165180878,
+              "-10": -0.20990403685238215,
+              "-9": -0.20911040031947345,
+              "-8": -0.20351575315882647,
+              "-7": -0.19585434294679224,
+              "-6": -0.18912869693026113,
+              "-5": -0.17960064237761425,
+              "-4": -0.17415424849992334,
+              "-3": -0.1642298926364439,
+              "-2": -0.16265465096355297,
+              "-1": -0.15792059094696792,
+              "0": -0.15262456016067846,
+              "1": -0.14147238416394553,
+              "2": -0.1283143983475249,
+              "3": -0.11743103112926728,
+              "4": -0.11187857236097014,
+              "5": -0.1048908292095836,
+              "6": -0.09487152057135811,
+              "7": -0.08013248002992919,
+              "8": -0.0672775749499352,
+              "9": -0.05734670522284927,
+              "10": -0.04481625069888935,
+              "11": -0.036933491084549505,
+              "12": -0.02725975330014425
+            },
+            "optimal_lag": -12,
+            "max_correlation": -0.21766537906952735,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.14668400115322255,
+            "correlation_volatility": 0.47851123221334607,
+            "correlation_range": 1.774285309240149,
+            "is_stable": "False",
+            "structural_break_p_value": 1.3017593102096182e-28,
+            "coefficient_of_variation": 3.2621910259558904
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "housing_starts",
+          "rent_growth"
+        ],
+        "relationship_type": "weak",
+        "confidence": 0.5926051020957332,
+        "lag_structure": -12,
+        "direction": "bidirectional",
+        "interpretation": "housing_starts shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.13826476448264433,
+              "p_value": 0.002204141672925972,
+              "significant": "True"
+            },
+            "spearman": {
+              "coefficient": -0.14825899559000671,
+              "p_value": 0.00102011112216205,
+              "significant": "True"
+            },
+            "kendall": {
+              "coefficient": -0.09662787077353287,
+              "p_value": 0.0014207673449611617,
+              "significant": "True"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.07377049180327869,
+            "ks_p_value": 0.1404905527429867,
+            "similar_distribution": "True",
+            "skew_difference": 0.42427272794357246,
+            "kurtosis_difference": 1.0069910695127084
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.2160785715567108,
+              "-11": -0.20361915664013827,
+              "-10": -0.18797010473061096,
+              "-9": -0.17250797366267515,
+              "-8": -0.16807581057735574,
+              "-7": -0.1623234514443601,
+              "-6": -0.15749935228831646,
+              "-5": -0.15170922826266484,
+              "-4": -0.14864708074884092,
+              "-3": -0.15584661455198467,
+              "-2": -0.15673032563123312,
+              "-1": -0.15433803588726053,
+              "0": -0.13826476448264438,
+              "1": -0.12544113903203408,
+              "2": -0.1101578457130423,
+              "3": -0.09483767895753845,
+              "4": -0.07877246451958465,
+              "5": -0.06282305817148931,
+              "6": -0.05328309588069144,
+              "7": -0.048276975184779275,
+              "8": -0.04560859967129522,
+              "9": -0.041321196470930355,
+              "10": -0.034871916985521494,
+              "11": -0.0230086639955305,
+              "12": -0.015808655117024346
+            },
+            "optimal_lag": -12,
+            "max_correlation": -0.2160785715567108,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.1281981009817577,
+            "correlation_volatility": 0.4112657876873121,
+            "correlation_range": 1.6239539771325286,
+            "is_stable": "False",
+            "structural_break_p_value": 4.511609018502983e-34,
+            "coefficient_of_variation": 3.208048984640063
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "sp500_returns",
+          "rent_growth"
+        ],
+        "relationship_type": "none",
+        "confidence": 0.13852911448776853,
+        "lag_structure": -3,
+        "direction": "none",
+        "interpretation": "sp500_returns is statistically independent of rent_growth. No significant correlation or pattern detected.",
+        "evidence": {
+          "correlations": {
+            "pearson": {
+              "coefficient": -0.054408479984075046,
+              "p_value": 0.23024457460591313,
+              "significant": "False"
+            },
+            "spearman": {
+              "coefficient": -0.04805636853290413,
+              "p_value": 0.2893768521289971,
+              "significant": "False"
+            },
+            "kendall": {
+              "coefficient": -0.03177742338647885,
+              "p_value": 0.29408484331754625,
+              "significant": "False"
+            }
+          },
+          "distribution_test": {
+            "ks_statistic": 0.06147540983606557,
+            "ks_p_value": 0.3152773946311342,
+            "similar_distribution": "True",
+            "skew_difference": 0.39419771639977425,
+            "kurtosis_difference": 0.2984926654937663
+          },
+          "lead_lag": {
+            "correlations_by_lag": {
+              "-12": -0.0455504509172684,
+              "-11": -0.0275760892957092,
+              "-10": -0.038677244983303334,
+              "-9": -0.03561925553282524,
+              "-8": -0.062013382432962554,
+              "-7": -0.04002730098260458,
+              "-6": -0.05345929590626643,
+              "-5": -0.03698902607003159,
+              "-4": -0.06273020725253449,
+              "-3": -0.08990126713812654,
+              "-2": -0.08900903771694217,
+              "-1": -0.0883803484534939,
+              "0": -0.05440847998407504,
+              "1": -0.06337477931065821,
+              "2": -0.05041680103980783,
+              "3": -0.07299379749467039,
+              "4": -0.07057955046497578,
+              "5": -0.07939876711567088,
+              "6": -0.06068221706963287,
+              "7": -0.05743034937199425,
+              "8": -0.037838741225080616,
+              "9": -0.031807018459728754,
+              "10": 0.0003027030348929641,
+              "11": -0.005390867821396166,
+              "12": -0.02764755069965894
+            },
+            "optimal_lag": -3,
+            "max_correlation": -0.08990126713812654,
+            "lead_lag_pattern": "x_leads"
+          },
+          "stability": {
+            "mean_correlation": -0.012223582163821987,
+            "correlation_volatility": 0.13376741266442974,
+            "correlation_range": 0.6445900557977133,
+            "is_stable": "False",
+            "structural_break_p_value": 1.961668251076755e-27,
+            "coefficient_of_variation": 10.943388842293693
+          }
+        }
+      }
+    ]
+  },
+  "econometric": {
+    "agent_id": "an-econ-001",
+    "methodology": "Time series econometrics with focus on causality",
+    "execution_time": 5.0067901611328125e-06,
+    "findings": [
+      {
+        "variable_pair": [
+          "fed_funds",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.43234674359145053,
+        "lag_structure": 8,
+        "direction": "none",
+        "interpretation": "fed_funds shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "False",
+            "p_value": 0.17745590418884208,
+            "optimal_lag": 8,
+            "f_statistic": 1.4397499331903274
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 28.204207341341267,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.05275821214576274
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.48975721700119546,
+            "peak_impact": 0.10782247863816834,
+            "peak_period": 9,
+            "persistence": 0.05971970387050432
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "treasury_10y",
+          "rent_growth"
+        ],
+        "relationship_type": "strong",
+        "confidence": 0.8781400106561631,
+        "lag_structure": 11,
+        "direction": "unidirectional",
+        "interpretation": "treasury_10y has a strong relationship with rent_growth. Changes in treasury_10y significantly predict rent_growth with 11 period lag. Variables share a long-term equilibrium relationship.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 0.013159419829080558,
+            "optimal_lag": 11,
+            "f_statistic": 2.2086559135140083
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 27.27330042615667,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.05103529066578599
+          },
+          "impulse_response": {
+            "cumulative_impact": -1.4027430104496394,
+            "peak_impact": 0.6113459286259841,
+            "peak_period": 9,
+            "persistence": 0.3034956618464755
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "unemployment",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7612845383980958,
+        "lag_structure": 2,
+        "direction": "unidirectional",
+        "interpretation": "unemployment shows moderate relationship with rent_growth. Some predictive power detected at 2 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 0.004112557613989676,
+            "optimal_lag": 2,
+            "f_statistic": 5.5569367135403125
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 32.296334094281406,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.05284175453588553
+          },
+          "impulse_response": {
+            "cumulative_impact": 1.5510206462321328,
+            "peak_impact": 0.20976520481230543,
+            "peak_period": 6,
+            "persistence": 0.1797267538389896
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "gdp_growth",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7538688435745889,
+        "lag_structure": 3,
+        "direction": "unidirectional",
+        "interpretation": "gdp_growth shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 0.0018749346193073252,
+            "optimal_lag": 3,
+            "f_statistic": 5.050838883473852
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 45.38845765212427,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.05408710992968631
+          },
+          "impulse_response": {
+            "cumulative_impact": 0.7931429898213882,
+            "peak_impact": 0.1820627247410393,
+            "peak_period": 5,
+            "persistence": 0.09224911257878422
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "vacancy_rate",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.45217900667971317,
+        "lag_structure": 1,
+        "direction": "none",
+        "interpretation": "vacancy_rate shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "False",
+            "p_value": 0.34314435921392183,
+            "optimal_lag": 1,
+            "f_statistic": 0.9004136900867138
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 52.18550065063936,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.061065758087670015
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.8003971168990829,
+            "peak_impact": 0.17393002226571053,
+            "peak_period": 8,
+            "persistence": 0.08906356936838274
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "new_supply",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7005180953203033,
+        "lag_structure": 3,
+        "direction": "unidirectional",
+        "interpretation": "new_supply shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 2.2018679868742573e-09,
+            "optimal_lag": 3,
+            "f_statistic": 15.064483703880324
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 63.72574964095888,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.08308251375219869
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.00949022769362976,
+            "peak_impact": 0.0017269873368347874,
+            "peak_period": 7,
+            "persistence": 0.001300279912196879
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "absorption",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7006534842446639,
+        "lag_structure": 3,
+        "direction": "unidirectional",
+        "interpretation": "absorption shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 8.082885568984106e-19,
+            "optimal_lag": 3,
+            "f_statistic": 31.91474369484261
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 148.77246712831186,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.23659485419393328
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.0038783683945166347,
+            "peak_impact": 0.0021782808155464055,
+            "peak_period": 9,
+            "persistence": 0.0010587117492868198
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "cpi_change",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.5466335405965566,
+        "lag_structure": 3,
+        "direction": "none",
+        "interpretation": "cpi_change shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "False",
+            "p_value": 0.1856173889684405,
+            "optimal_lag": 3,
+            "f_statistic": 1.6124382243910904
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 228.84085301660159,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.34732031878591696
+          },
+          "impulse_response": {
+            "cumulative_impact": -2.038449055569459,
+            "peak_impact": 0.48877846865518865,
+            "peak_period": 3,
+            "persistence": 0.1938819175131615
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "supply_demand_balance",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.7018851209240481,
+        "lag_structure": 3,
+        "direction": "unidirectional",
+        "interpretation": "supply_demand_balance shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 1.8220662832258143e-30,
+            "optimal_lag": 3,
+            "f_statistic": 54.81280744357901
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 183.74759136572698,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.280937230107336
+          },
+          "impulse_response": {
+            "cumulative_impact": 0.030709819569836695,
+            "peak_impact": 0.006283736413493788,
+            "peak_period": 3,
+            "persistence": 0.0021783894317258996
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "real_rates",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.4269874623649708,
+        "lag_structure": 7,
+        "direction": "none",
+        "interpretation": "real_rates shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "False",
+            "p_value": 0.22361454048834611,
+            "optimal_lag": 7,
+            "f_statistic": 1.3527196322552366
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 27.499883228914307,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.050943969568949546
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.34013186278369395,
+            "peak_impact": 0.089958207883236,
+            "peak_period": 2,
+            "persistence": 0.04847125045766892
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "housing_starts",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.40029889076996683,
+        "lag_structure": 4,
+        "direction": "none",
+        "interpretation": "housing_starts shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "False",
+            "p_value": 0.05184373744701766,
+            "optimal_lag": 4,
+            "f_statistic": 2.3683769503952803
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 33.658585017881315,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.04562893771603236
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.00563607656661035,
+            "peak_impact": 0.0009963025665559481,
+            "peak_period": 3,
+            "persistence": 0.0004302584126195481
+          }
+        }
+      },
+      {
+        "variable_pair": [
+          "sp500_returns",
+          "rent_growth"
+        ],
+        "relationship_type": "moderate",
+        "confidence": 0.6910559023824674,
+        "lag_structure": 1,
+        "direction": "unidirectional",
+        "interpretation": "sp500_returns shows moderate relationship with rent_growth. Some predictive power detected at 1 period lag.",
+        "evidence": {
+          "granger_causality": {
+            "causes_target": "True",
+            "p_value": 0.029726605426989412,
+            "optimal_lag": 1,
+            "f_statistic": 4.753100322070534
+          },
+          "cointegration": {
+            "is_cointegrated": "True",
+            "trace_statistic": 227.55872236440547,
+            "critical_value_5pct": 15.4943,
+            "eigenvalue": 0.3452092806648137
+          },
+          "impulse_response": {
+            "cumulative_impact": -0.017583917096367398,
+            "peak_impact": 0.009821815177543736,
+            "peak_period": 2,
+            "persistence": 0.0024696334913128174
+          }
+        }
+      }
+    ]
+  },
+  "consensus": {
+    "consensus_results": {
+      "fed_funds_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.3178215488284783,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "moderate",
+            "confidence": 0.4757148244899161,
+            "weight": 0.35,
+            "interpretation": "fed_funds has moderate predictive value for rent_growth. Non-linear effects present. Contributing 3.8% to model predictions."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.5940551590178044,
+            "weight": 0.3,
+            "interpretation": "fed_funds shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.43234674359145053,
+            "weight": 0.35,
+            "interpretation": "fed_funds shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+          }
+        },
+        "interpretations": [
+          "fed_funds has moderate predictive value for rent_growth. Non-linear effects present. Contributing 3.8% to model predictions.",
+          "fed_funds shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "fed_funds shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      },
+      "treasury_10y_to_rent_growth": {
+        "consensus_relationship": "strong",
+        "consensus_confidence": 0.30734900372965707,
+        "agreement_level": "moderate",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "moderate",
+            "confidence": 0.49828291943399394,
+            "weight": 0.35,
+            "interpretation": "treasury_10y has moderate predictive value for rent_growth. Non-linear effects present. Contributing 8.4% to model predictions."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.5948091462968401,
+            "weight": 0.3,
+            "interpretation": "treasury_10y shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "strong",
+            "confidence": 0.8781400106561631,
+            "weight": 0.35,
+            "interpretation": "treasury_10y has a strong relationship with rent_growth. Changes in treasury_10y significantly predict rent_growth with 11 period lag. Variables share a long-term equilibrium relationship."
+          }
+        },
+        "interpretations": [
+          "treasury_10y has moderate predictive value for rent_growth. Non-linear effects present. Contributing 8.4% to model predictions.",
+          "treasury_10y shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "treasury_10y has a strong relationship with rent_growth. Changes in treasury_10y significantly predict rent_growth with 11 period lag. Variables share a long-term equilibrium relationship."
+        ],
+        "recommendation": "MODERATE-HIGH CONFIDENCE: Include as predictor but note methodological disagreement. Further investigation recommended."
+      },
+      "unemployment_to_rent_growth": {
+        "consensus_relationship": "weak",
+        "consensus_confidence": 0.2847519779779575,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "weak",
+            "confidence": 0.296573468605726,
+            "weight": 0.35,
+            "interpretation": "unemployment shows limited predictive power for rent_growth. May contribute in combination with other variables."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.6031708798865113,
+            "weight": 0.3,
+            "interpretation": "unemployment shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.7612845383980958,
+            "weight": 0.35,
+            "interpretation": "unemployment shows moderate relationship with rent_growth. Some predictive power detected at 2 period lag."
+          }
+        },
+        "interpretations": [
+          "unemployment shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+          "unemployment shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "unemployment shows moderate relationship with rent_growth. Some predictive power detected at 2 period lag."
+        ],
+        "recommendation": "LOW CONFIDENCE: Consider for ensemble models only. Weak signal that may contribute in combination with others."
+      },
+      "gdp_growth_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.6695731887211691,
+        "agreement_level": "unanimous",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "moderate",
+            "confidence": 0.5429924216818492,
+            "weight": 0.35,
+            "interpretation": "gdp_growth has moderate predictive value for rent_growth. Non-linear effects present. Contributing 21.8% to model predictions."
+          },
+          "an-stat-001": {
+            "type": "moderate",
+            "confidence": 0.7189058196047197,
+            "weight": 0.3,
+            "interpretation": "gdp_growth has moderate statistical association with rent_growth. Correlation coefficient: 0.50. Relationship strength varies across periods."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.7538688435745889,
+            "weight": 0.35,
+            "interpretation": "gdp_growth shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+          }
+        },
+        "interpretations": [
+          "gdp_growth has moderate predictive value for rent_growth. Non-linear effects present. Contributing 21.8% to model predictions.",
+          "gdp_growth has moderate statistical association with rent_growth. Correlation coefficient: 0.50. Relationship strength varies across periods.",
+          "gdp_growth shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      },
+      "vacancy_rate_to_rent_growth": {
+        "consensus_relationship": "weak",
+        "consensus_confidence": 0.280466089840795,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "weak",
+            "confidence": 0.29891367777752065,
+            "weight": 0.35,
+            "interpretation": "vacancy_rate shows limited predictive power for rent_growth. May contribute in combination with other variables."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.5861543420622094,
+            "weight": 0.3,
+            "interpretation": "vacancy_rate shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.45217900667971317,
+            "weight": 0.35,
+            "interpretation": "vacancy_rate shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+          }
+        },
+        "interpretations": [
+          "vacancy_rate shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+          "vacancy_rate shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "vacancy_rate shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+        ],
+        "recommendation": "LOW CONFIDENCE: Consider for ensemble models only. Weak signal that may contribute in combination with others."
+      },
+      "new_supply_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.7174760735097669,
+        "agreement_level": "unanimous",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "moderate",
+            "confidence": 0.6735737115772373,
+            "weight": 0.35,
+            "interpretation": "new_supply has moderate predictive value for rent_growth. Non-linear effects present. Contributing 10.2% to model predictions."
+          },
+          "an-stat-001": {
+            "type": "moderate",
+            "confidence": 0.7884798036520924,
+            "weight": 0.3,
+            "interpretation": "new_supply has moderate statistical association with rent_growth. Correlation coefficient: -0.67. Relationship strength varies across periods."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.7005180953203033,
+            "weight": 0.35,
+            "interpretation": "new_supply shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+          }
+        },
+        "interpretations": [
+          "new_supply has moderate predictive value for rent_growth. Non-linear effects present. Contributing 10.2% to model predictions.",
+          "new_supply has moderate statistical association with rent_growth. Correlation coefficient: -0.67. Relationship strength varies across periods.",
+          "new_supply shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      },
+      "absorption_to_rent_growth": {
+        "consensus_relationship": "weak",
+        "consensus_confidence": 0.3249161760369361,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "weak",
+            "confidence": 0.36750521556082394,
+            "weight": 0.35,
+            "interpretation": "absorption shows limited predictive power for rent_growth. May contribute in combination with other variables."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.6542978353021592,
+            "weight": 0.3,
+            "interpretation": "absorption shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.7006534842446639,
+            "weight": 0.35,
+            "interpretation": "absorption shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+          }
+        },
+        "interpretations": [
+          "absorption shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+          "absorption shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "absorption shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+        ],
+        "recommendation": "LOW CONFIDENCE: Consider for ensemble models only. Weak signal that may contribute in combination with others."
+      },
+      "cpi_change_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.19132173920879478,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "none",
+            "confidence": 0.22774368258743913,
+            "weight": 0.35,
+            "interpretation": "cpi_change appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms."
+          },
+          "an-stat-001": {
+            "type": "none",
+            "confidence": 0.14890714304696856,
+            "weight": 0.3,
+            "interpretation": "cpi_change is statistically independent of rent_growth. No significant correlation or pattern detected."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.5466335405965566,
+            "weight": 0.35,
+            "interpretation": "cpi_change shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+          }
+        },
+        "interpretations": [
+          "cpi_change appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+          "cpi_change is statistically independent of rent_growth. No significant correlation or pattern detected.",
+          "cpi_change shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      },
+      "supply_demand_balance_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.48565979232341683,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "strong",
+            "confidence": 1.0,
+            "weight": 0.35,
+            "interpretation": "supply_demand_balance shows strong predictive power for rent_growth. Non-linear patterns detected, suggesting complex relationship. Feature importance: 1.00, Information content: 1.00."
+          },
+          "an-stat-001": {
+            "type": "moderate",
+            "confidence": 0.8,
+            "weight": 0.3,
+            "interpretation": "supply_demand_balance has moderate statistical association with rent_growth. Correlation coefficient: 0.76. Relationship strength varies across periods."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.7018851209240481,
+            "weight": 0.35,
+            "interpretation": "supply_demand_balance shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+          }
+        },
+        "interpretations": [
+          "supply_demand_balance shows strong predictive power for rent_growth. Non-linear patterns detected, suggesting complex relationship. Feature importance: 1.00, Information content: 1.00.",
+          "supply_demand_balance has moderate statistical association with rent_growth. Correlation coefficient: 0.76. Relationship strength varies across periods.",
+          "supply_demand_balance shows moderate relationship with rent_growth. Some predictive power detected at 3 period lag."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      },
+      "real_rates_to_rent_growth": {
+        "consensus_relationship": "weak",
+        "consensus_confidence": 0.33501872505573826,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "weak",
+            "confidence": 0.44866621805207907,
+            "weight": 0.35,
+            "interpretation": "real_rates shows limited predictive power for rent_growth. May contribute in combination with other variables."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.5932851624583688,
+            "weight": 0.3,
+            "interpretation": "real_rates shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.4269874623649708,
+            "weight": 0.35,
+            "interpretation": "real_rates shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+          }
+        },
+        "interpretations": [
+          "real_rates shows limited predictive power for rent_growth. May contribute in combination with other variables.",
+          "real_rates shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "real_rates shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+        ],
+        "recommendation": "LOW CONFIDENCE: Consider for ensemble models only. Weak signal that may contribute in combination with others."
+      },
+      "housing_starts_to_rent_growth": {
+        "consensus_relationship": "weak",
+        "consensus_confidence": 0.17778153062871996,
+        "agreement_level": "moderate",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "none",
+            "confidence": 0.2534038185313893,
+            "weight": 0.35,
+            "interpretation": "housing_starts appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms."
+          },
+          "an-stat-001": {
+            "type": "weak",
+            "confidence": 0.5926051020957332,
+            "weight": 0.3,
+            "interpretation": "housing_starts shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.40029889076996683,
+            "weight": 0.35,
+            "interpretation": "housing_starts shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+          }
+        },
+        "interpretations": [
+          "housing_starts appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+          "housing_starts shows weak statistical relationship with rent_growth. Signal present but not strong enough for reliable predictions.",
+          "housing_starts shows moderate relationship with rent_growth. Limited causal evidence but structural connection exists."
+        ],
+        "recommendation": "LOW CONFIDENCE: Consider for ensemble models only. Weak signal that may contribute in combination with others."
+      },
+      "sp500_returns_to_rent_growth": {
+        "consensus_relationship": "moderate",
+        "consensus_confidence": 0.24186956583386357,
+        "agreement_level": "high",
+        "agent_findings": {
+          "an-ml-001": {
+            "type": "none",
+            "confidence": 0.22405970522165664,
+            "weight": 0.35,
+            "interpretation": "sp500_returns appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms."
+          },
+          "an-stat-001": {
+            "type": "none",
+            "confidence": 0.13852911448776853,
+            "weight": 0.3,
+            "interpretation": "sp500_returns is statistically independent of rent_growth. No significant correlation or pattern detected."
+          },
+          "an-econ-001": {
+            "type": "moderate",
+            "confidence": 0.6910559023824674,
+            "weight": 0.35,
+            "interpretation": "sp500_returns shows moderate relationship with rent_growth. Some predictive power detected at 1 period lag."
+          }
+        },
+        "interpretations": [
+          "sp500_returns appears uninformative for predicting rent_growth. No significant patterns detected by ML algorithms.",
+          "sp500_returns is statistically independent of rent_growth. No significant correlation or pattern detected.",
+          "sp500_returns shows moderate relationship with rent_growth. Some predictive power detected at 1 period lag."
+        ],
+        "recommendation": "MODERATE CONFIDENCE: Include as secondary predictor. Relationship exists but with limited strength or consistency."
+      }
+    },
+    "summary": {
+      "primary_predictors": [],
+      "secondary_predictors": [
+        "gdp_growth_to_rent_growth",
+        "new_supply_to_rent_growth"
+      ],
+      "weak_predictors": [
+        "unemployment_to_rent_growth",
+        "vacancy_rate_to_rent_growth",
+        "absorption_to_rent_growth",
+        "real_rates_to_rent_growth",
+        "housing_starts_to_rent_growth"
+      ],
+      "independent_variables": [
+        "fed_funds_to_rent_growth",
+        "treasury_10y_to_rent_growth",
+        "cpi_change_to_rent_growth",
+        "supply_demand_balance_to_rent_growth",
+        "sp500_returns_to_rent_growth"
+      ],
+      "total_variables_analyzed": 12,
+      "predictive_variables_count": 2
+    },
+    "methodology": "This consensus report synthesizes findings from three specialized agents:\n1. Econometric Agent (35% weight): Focuses on causality, cointegration, and structural relationships\n2. Machine Learning Agent (35% weight): Identifies non-linear patterns and feature importance\n3. Statistical Agent (30% weight): Performs classical correlation and distribution analysis\n\nEach agent independently analyzes relationships, then findings are aggregated using weighted voting. Agreement levels indicate consistency across methodologies, with unanimous agreement providing highest confidence.",
+    "confidence_metrics": {
+      "mean_confidence": 0.36116711764127446,
+      "median_confidence": 0.3125852762790677,
+      "unanimous_agreement_rate": 0.16666666666666666,
+      "high_agreement_rate": 0.8333333333333334
+    },
+    "execution_metrics": {
+      "total_time": 2.5033950805664062e-05,
+      "agent_timings": {
+        "machine_learning": 9.5367431640625e-06,
+        "statistical": 1.049041748046875e-05,
+        "econometric": 5.0067901611328125e-06
+      },
+      "parallel_speedup": 2.3863636363636362
+    }
+  }
+}

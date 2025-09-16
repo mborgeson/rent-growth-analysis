@@ -1,0 +1,717 @@
+# Agent Orchestration Configuration for Multifamily Rent Growth Analysis
+# Version: 1.0.0
+# Last Updated: 2024-12-09
+# Architecture: Hierarchical Swarm with Consensus Mechanisms
+
+---
+metadata:
+  project_name: "Multifamily Rent Growth Time Series Analysis"
+  version: "1.0.0"
+  environment: "production"
+  max_parallel_agents: 15
+  consensus_threshold: 0.75
+  quality_gate_threshold: 0.85
+  timeout_minutes: 240
+  retry_policy:
+    max_attempts: 3
+    backoff_strategy: "exponential"
+    initial_delay_seconds: 30
+
+# Master Orchestrator Configuration
+orchestrator:
+  name: "MasterCoordinator"
+  id: "orch-001"
+  capabilities:
+    - task_decomposition
+    - resource_allocation
+    - conflict_resolution
+    - quality_validation
+    - checkpoint_management
+    - performance_monitoring
+  
+  resource_limits:
+    max_memory_gb: 8
+    max_cpu_cores: 2
+    priority: "critical"
+  
+  communication:
+    protocol: "async_message_queue"
+    heartbeat_interval_seconds: 30
+    dead_letter_queue: true
+  
+  decision_framework:
+    voting_mechanism: "weighted_consensus"
+    tie_breaker: "quality_score"
+    escalation_threshold: 3
+    human_intervention_triggers:
+      - "consensus_failure"
+      - "critical_error"
+      - "budget_exceeded"
+
+# Data Engineering Swarm
+data_swarm:
+  name: "DataEngineeringSwarm"
+  swarm_id: "data-swarm-001"
+  parallelization: true
+  max_concurrent: 8
+  
+  agents:
+    # Data Collection Agents
+    fred_collector:
+      type: "data_collector"
+      id: "dc-fred-001"
+      specialization: "FRED_API"
+      capabilities:
+        - api_authentication
+        - rate_limiting
+        - retry_logic
+        - data_validation
+      config:
+        api_endpoint: "api.stlouisfed.org/fred/series"
+        rate_limit: 120  # requests per minute
+        timeout_seconds: 30
+        cache_ttl_hours: 24
+        priority_series:
+          - "FEDFUNDS"
+          - "DGS10"
+          - "CPIAUCSL"
+          - "UNRATE"
+          - "GDPC1"
+      error_handling:
+        strategy: "exponential_backoff"
+        fallback: "cached_data"
+        alert_on_failure: true
+    
+    census_collector:
+      type: "data_collector"
+      id: "dc-census-001"
+      specialization: "Census_API"
+      capabilities:
+        - batch_requests
+        - geographic_filtering
+        - vintage_selection
+      config:
+        api_endpoint: "api.census.gov/data"
+        rate_limit: 500  # requests per day
+        batch_size: 50
+        datasets:
+          - "acs/acs5"
+          - "popest"
+          - "building_permits"
+    
+    web_scraper:
+      type: "data_collector"
+      id: "dc-scraper-001"
+      specialization: "Web_Scraping"
+      capabilities:
+        - javascript_rendering
+        - anti_bot_detection
+        - proxy_rotation
+      config:
+        targets:
+          - url: "apartmentlist.com/research/data"
+            frequency: "daily"
+            parser: "beautifulsoup"
+          - url: "cromfordreport.com"
+            frequency: "weekly"
+            parser: "selenium"
+        user_agents: "rotate"
+        proxy_pool_size: 10
+        respect_robots_txt: true
+    
+    alternative_data_collector:
+      type: "data_collector"
+      id: "dc-alt-001"
+      specialization: "Alternative_Data"
+      capabilities:
+        - satellite_imagery_processing
+        - social_media_sentiment
+        - google_trends_analysis
+      config:
+        sources:
+          - "google_trends"
+          - "twitter_api"
+          - "satellite_providers"
+        update_frequency: "weekly"
+    
+    # Data Quality Agents
+    quality_controller:
+      type: "data_engineer"
+      id: "de-qc-001"
+      specialization: "Quality_Control"
+      capabilities:
+        - anomaly_detection
+        - missing_data_imputation
+        - outlier_treatment
+        - consistency_validation
+      config:
+        quality_rules:
+          completeness_threshold: 0.85
+          outlier_method: "isolation_forest"
+          imputation_strategy: "mice"
+          validation_checks:
+            - "temporal_consistency"
+            - "cross_source_validation"
+            - "business_rule_compliance"
+      reporting:
+        frequency: "per_batch"
+        format: "json"
+        alert_threshold: "critical"
+    
+    feature_engineer:
+      type: "data_engineer"
+      id: "de-fe-001"
+      specialization: "Feature_Engineering"
+      capabilities:
+        - transformation_pipeline
+        - interaction_generation
+        - lag_creation
+        - dimensionality_reduction
+      config:
+        transformations:
+          - "log_returns"
+          - "moving_averages"
+          - "volatility_measures"
+          - "seasonal_decomposition"
+        interaction_terms:
+          max_degree: 2
+          selection_method: "mutual_information"
+        lag_structure:
+          max_lags: 24
+          selection_criteria: "AIC"
+    
+    database_manager:
+      type: "data_engineer"
+      id: "de-db-001"
+      specialization: "Database_Management"
+      capabilities:
+        - schema_design
+        - index_optimization
+        - query_optimization
+        - backup_management
+      config:
+        database_type: "PostgreSQL"
+        connection_pool_size: 20
+        write_batch_size: 1000
+        backup_frequency: "daily"
+        retention_days: 90
+
+# Analysis Swarm
+analysis_swarm:
+  name: "AnalyticalSwarm"
+  swarm_id: "analysis-swarm-001"
+  coordination_mode: "collaborative"
+  
+  agents:
+    econometrician:
+      type: "analyst"
+      id: "an-econ-001"
+      specialization: "Econometrics"
+      capabilities:
+        - time_series_modeling
+        - causality_testing
+        - cointegration_analysis
+        - structural_modeling
+      models:
+        - "VAR"
+        - "VECM"
+        - "ARDL"
+        - "State_Space"
+      config:
+        max_lag_search: 12
+        significance_level: 0.05
+        robustness_checks:
+          - "heteroskedasticity"
+          - "serial_correlation"
+          - "parameter_stability"
+      validation:
+        method: "rolling_window"
+        window_size: 60
+        step_size: 1
+    
+    ml_specialist:
+      type: "analyst"
+      id: "an-ml-001"
+      specialization: "Machine_Learning"
+      capabilities:
+        - ensemble_methods
+        - deep_learning
+        - hyperparameter_tuning
+        - feature_selection
+      models:
+        - name: "RandomForest"
+          n_estimators: 500
+          max_depth: "auto_tune"
+        - name: "XGBoost"
+          early_stopping_rounds: 50
+          objective: "reg:squarederror"
+        - name: "LSTM"
+          architecture: "attention"
+          layers: 3
+      config:
+        cross_validation: "TimeSeriesSplit"
+        n_splits: 5
+        optimization_method: "bayesian"
+        gpu_enabled: true
+    
+    statistician:
+      type: "analyst"
+      id: "an-stat-001"
+      specialization: "Statistics"
+      capabilities:
+        - hypothesis_testing
+        - correlation_analysis
+        - distribution_fitting
+        - bootstrap_methods
+      config:
+        confidence_level: 0.95
+        multiple_testing_correction: "FDR"
+        bootstrap_iterations: 10000
+        parallel_computation: true
+    
+    regime_analyst:
+      type: "analyst"
+      id: "an-regime-001"
+      specialization: "Regime_Detection"
+      capabilities:
+        - markov_switching
+        - threshold_models
+        - structural_breaks
+        - regime_classification
+      config:
+        regimes:
+          - "expansion"
+          - "recession"
+          - "recovery"
+          - "bubble"
+        detection_methods:
+          - "hidden_markov"
+          - "threshold_var"
+          - "bai_perron"
+        min_regime_duration: 6  # months
+
+# Validation Swarm
+validation_swarm:
+  name: "ValidationSwarm"
+  swarm_id: "validation-swarm-001"
+  
+  agents:
+    model_validator:
+      type: "validator"
+      id: "val-model-001"
+      specialization: "Model_Validation"
+      capabilities:
+        - cross_validation
+        - backtesting
+        - performance_metrics
+        - stability_testing
+      config:
+        metrics:
+          - "RMSE"
+          - "MAE"
+          - "MAPE"
+          - "directional_accuracy"
+          - "R_squared"
+        backtesting:
+          method: "walk_forward"
+          initial_window: 120
+          step_size: 1
+        stability_tests:
+          - "recursive_estimation"
+          - "rolling_window"
+          - "parameter_constancy"
+    
+    business_validator:
+      type: "validator"
+      id: "val-bus-001"
+      specialization: "Business_Rules"
+      capabilities:
+        - economic_sensibility
+        - investment_signals
+        - risk_assessment
+        - regulatory_compliance
+      config:
+        business_rules:
+          - "positive_rent_growth_bounds"
+          - "reasonable_forecast_ranges"
+          - "consistent_market_cycles"
+        investment_thresholds:
+          buy_signal: 0.7
+          sell_signal: 0.3
+          hold_zone: [0.3, 0.7]
+        compliance_checks:
+          - "SEC_fair_disclosure"
+          - "data_privacy"
+          - "material_information"
+
+# Visualization & Reporting Swarm
+visualization_swarm:
+  name: "VisualizationSwarm"
+  swarm_id: "viz-swarm-001"
+  
+  agents:
+    dashboard_developer:
+      type: "visualizer"
+      id: "viz-dash-001"
+      specialization: "Dashboard_Development"
+      capabilities:
+        - real_time_updates
+        - interactive_charts
+        - responsive_design
+        - alert_system
+      config:
+        framework: "plotly_dash"
+        update_frequency: "real_time"
+        cache_strategy: "redis"
+        charts:
+          - "time_series_forecast"
+          - "correlation_heatmap"
+          - "feature_importance"
+          - "geographic_comparison"
+        alert_rules:
+          - trigger: "forecast_deviation > 10%"
+            action: "email_notification"
+          - trigger: "data_quality < 0.8"
+            action: "dashboard_warning"
+    
+    report_generator:
+      type: "visualizer"  
+      id: "viz-report-001"
+      specialization: "Report_Generation"
+      capabilities:
+        - executive_summaries
+        - technical_documentation
+        - presentation_creation
+        - narrative_generation
+      config:
+        templates:
+          executive: "executive_summary.jinja2"
+          technical: "technical_report.jinja2"
+          presentation: "board_deck.pptx"
+        output_formats:
+          - "PDF"
+          - "HTML"
+          - "PowerPoint"
+          - "Markdown"
+        language_models:
+          summarization: "gpt-4"
+          narrative: "claude-3"
+
+# Execution Flow Configuration
+execution_flow:
+  phases:
+    - phase_id: "phase_0"
+      name: "Data_Acquisition"
+      agents:
+        - "dc-fred-001"
+        - "dc-census-001"
+        - "dc-scraper-001"
+        - "dc-alt-001"
+      parallel: true
+      timeout_minutes: 60
+      checkpoint: "data_completeness"
+      success_criteria:
+        completeness: 0.85
+        quality_score: 0.90
+    
+    - phase_id: "phase_1"
+      name: "Data_Engineering"
+      agents:
+        - "de-qc-001"
+        - "de-fe-001"
+        - "de-db-001"
+      parallel: false  # Sequential for data pipeline
+      timeout_minutes: 30
+      checkpoint: "feature_readiness"
+      dependencies: ["phase_0"]
+    
+    - phase_id: "phase_2"
+      name: "Analysis"
+      agents:
+        - "an-econ-001"
+        - "an-ml-001"
+        - "an-stat-001"
+        - "an-regime-001"
+      parallel: true
+      timeout_minutes: 90
+      checkpoint: "model_convergence"
+      dependencies: ["phase_1"]
+    
+    - phase_id: "phase_3"
+      name: "Validation"
+      agents:
+        - "val-model-001"
+        - "val-bus-001"
+      parallel: true
+      timeout_minutes: 30
+      checkpoint: "validation_passed"
+      dependencies: ["phase_2"]
+    
+    - phase_id: "phase_4"
+      name: "Reporting"
+      agents:
+        - "viz-dash-001"
+        - "viz-report-001"
+      parallel: true
+      timeout_minutes: 30
+      checkpoint: "deliverables_complete"
+      dependencies: ["phase_3"]
+
+# Inter-Agent Communication
+communication:
+  message_broker:
+    type: "RabbitMQ"
+    host: "localhost"
+    port: 5672
+    exchanges:
+      - name: "data_exchange"
+        type: "topic"
+        durable: true
+      - name: "analysis_exchange"
+        type: "direct"
+        durable: true
+      - name: "control_exchange"
+        type: "fanout"
+        durable: false
+  
+  message_patterns:
+    request_response:
+      timeout_seconds: 30
+      retry_count: 3
+    
+    publish_subscribe:
+      topics:
+        - "data.ready"
+        - "model.complete"
+        - "validation.passed"
+        - "error.critical"
+    
+    work_queue:
+      prefetch_count: 2
+      acknowledgment: "auto"
+
+# Consensus Mechanisms
+consensus:
+  voting_rules:
+    model_selection:
+      method: "weighted_vote"
+      weights:
+        econometrician: 0.35
+        ml_specialist: 0.35
+        statistician: 0.20
+        regime_analyst: 0.10
+      minimum_votes: 3
+      tie_breaker: "performance_metrics"
+    
+    feature_importance:
+      method: "ranked_choice"
+      aggregation: "borda_count"
+      minimum_agreement: 0.60
+    
+    investment_signal:
+      method: "unanimous"
+      required_agents:
+        - "an-econ-001"
+        - "val-bus-001"
+      veto_power: ["val-bus-001"]
+
+# Resource Management
+resources:
+  compute:
+    total_cores: 8
+    total_memory_gb: 32
+    allocation_strategy: "dynamic"
+    priority_queue:
+      - "orchestrator"
+      - "validation_swarm"
+      - "analysis_swarm"
+      - "data_swarm"
+      - "visualization_swarm"
+  
+  storage:
+    raw_data:
+      type: "S3"
+      bucket: "multifamily-raw-data"
+      retention_days: 365
+    
+    processed_data:
+      type: "PostgreSQL"
+      database: "multifamily_analysis"
+      schema: "public"
+      backup_frequency: "daily"
+    
+    model_artifacts:
+      type: "MLflow"
+      tracking_uri: "http://localhost:5000"
+      artifact_location: "s3://model-artifacts"
+  
+  api_quotas:
+    FRED:
+      daily_limit: 100000
+      rate_limit: 120  # per minute
+      reset_time: "00:00 UTC"
+    
+    Census:
+      daily_limit: 500
+      rate_limit: 10  # per minute
+      reset_time: "00:00 EST"
+
+# Monitoring & Alerting
+monitoring:
+  metrics:
+    - name: "agent_health"
+      type: "heartbeat"
+      interval_seconds: 30
+      alert_after_misses: 3
+    
+    - name: "task_completion_rate"
+      type: "percentage"
+      window: "rolling_hour"
+      alert_threshold: 0.80
+    
+    - name: "resource_utilization"
+      type: "gauge"
+      components: ["cpu", "memory", "network"]
+      alert_threshold: 0.90
+    
+    - name: "data_quality_score"
+      type: "composite"
+      components: ["completeness", "accuracy", "timeliness"]
+      alert_threshold: 0.85
+  
+  logging:
+    level: "INFO"
+    format: "json"
+    destinations:
+      - type: "file"
+        path: "/var/log/agent_orchestration.log"
+        rotation: "daily"
+        retention_days: 30
+      - type: "elasticsearch"
+        index: "agent-logs"
+        host: "localhost:9200"
+  
+  alerting:
+    channels:
+      - type: "email"
+        recipients: ["team@company.com"]
+        severity: ["critical", "high"]
+      - type: "slack"
+        webhook: "${SLACK_WEBHOOK_URL}"
+        channel: "#agent-alerts"
+        severity: ["all"]
+      - type: "pagerduty"
+        api_key: "${PAGERDUTY_API_KEY}"
+        severity: ["critical"]
+
+# Failure Recovery
+failure_recovery:
+  strategies:
+    agent_failure:
+      detection: "heartbeat_timeout"
+      action: "restart_agent"
+      max_restarts: 3
+      escalation: "spawn_backup_agent"
+    
+    data_failure:
+      detection: "validation_failure"
+      action: "use_cached_data"
+      cache_validity_hours: 24
+      escalation: "use_alternative_source"
+    
+    model_failure:
+      detection: "convergence_failure"
+      action: "simplify_model"
+      fallback_models:
+        - "naive_forecast"
+        - "simple_average"
+        - "last_known_good"
+      escalation: "human_intervention"
+    
+    system_failure:
+      detection: "resource_exhaustion"
+      action: "graceful_degradation"
+      priority_preservation:
+        - "data_persistence"
+        - "model_checkpoints"
+        - "partial_results"
+      escalation: "emergency_shutdown"
+
+# Security Configuration
+security:
+  authentication:
+    method: "jwt"
+    token_expiry_seconds: 3600
+    refresh_enabled: true
+  
+  authorization:
+    model: "rbac"
+    roles:
+      - name: "orchestrator"
+        permissions: ["all"]
+      - name: "analyst"
+        permissions: ["read", "compute", "write_results"]
+      - name: "collector"
+        permissions: ["read_external", "write_raw"]
+  
+  encryption:
+    at_rest: "AES-256"
+    in_transit: "TLS-1.3"
+    key_management: "AWS_KMS"
+  
+  audit:
+    enabled: true
+    events:
+      - "agent_spawn"
+      - "data_access"
+      - "model_training"
+      - "result_generation"
+    retention_days: 90
+
+# Performance Optimization
+optimization:
+  caching:
+    strategy: "LRU"
+    size_mb: 1024
+    ttl_hours: 24
+    cache_keys:
+      - "api_responses"
+      - "feature_calculations"
+      - "model_predictions"
+  
+  parallelization:
+    method: "multiprocessing"
+    max_workers: 8
+    chunk_size: "auto"
+    load_balancing: "round_robin"
+  
+  batching:
+    enabled: true
+    batch_sizes:
+      data_collection: 100
+      feature_engineering: 1000
+      model_training: 5000
+      prediction: 10000
+  
+  profiling:
+    enabled: true
+    components:
+      - "data_pipeline"
+      - "model_training"
+      - "prediction_generation"
+    output_format: "flamegraph"
+
+# Version Control
+version_control:
+  strategy: "semantic_versioning"
+  current_version: "1.0.0"
+  compatibility:
+    minimum_version: "0.9.0"
+    breaking_changes:
+      - version: "2.0.0"
+        description: "Agent communication protocol change"
+  
+  migration:
+    auto_migrate: false
+    backup_before_migration: true
+    rollback_enabled: true

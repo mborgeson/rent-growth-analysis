@@ -1,0 +1,162 @@
+# Configuration for Multifamily Rent Growth Analysis
+# This file controls data collection, analysis parameters, and output settings
+
+data:
+  # Time period for analysis
+  start_date: '1985-01-01'
+  end_date: '2025-09-12'
+  frequency: 'm'  # monthly data
+  
+  # Target markets for MSA-level analysis
+  target_markets:
+    - phoenix
+    - austin
+    - dallas
+    - denver
+    - salt_lake_city
+    - nashville
+    - miami
+  
+  # Data sources configuration
+  sources:
+    fred:
+      enabled: true
+      api_key: null  # Set via FRED_API_KEY environment variable
+      rate_limit: 120  # requests per minute
+      cache_ttl_hours: 24
+    
+    census:
+      enabled: false  # Enable when API key available
+      api_key: null
+      
+    real_estate:
+      enabled: false  # Enable when data sources available
+      providers:
+        - costar
+        - redfin
+        - apartment_list
+
+analysis:
+  # Correlation analysis settings
+  correlations:
+    methods:
+      - pearson
+      - spearman
+      - kendall
+    lags: [0, 1, 3, 6, 12, 24]  # months
+    rolling_windows: [3, 6, 12, 24, 36]  # months
+  
+  # Causality testing
+  causality:
+    max_granger_lag: 12
+    significance_level: 0.05
+  
+  # Stationarity testing
+  stationarity:
+    adf_regression: 'c'  # constant only
+    kpss_regression: 'c'  # constant only
+    significance_level: 0.05
+  
+  # Cointegration testing
+  cointegration:
+    det_order: 0
+    k_ar_diff: 1
+    
+  # Machine learning settings
+  ml_models:
+    random_forest:
+      n_estimators: 100
+      max_depth: 10
+      min_samples_split: 5
+      min_samples_leaf: 2
+    
+    xgboost:
+      n_estimators: 100
+      max_depth: 6
+      learning_rate: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+    
+    lstm:
+      enabled: false  # Enable for deep learning
+      hidden_units: 50
+      dropout: 0.2
+      epochs: 100
+      batch_size: 32
+  
+  # Cross-validation settings
+  validation:
+    cv_splits: 5
+    test_months: 24  # Hold-out test set size
+    walk_forward_window: 12  # months for walk-forward analysis
+  
+  # Feature engineering
+  features:
+    create_lags: true
+    lag_periods: [1, 3, 6, 12]
+    create_rolling: true
+    rolling_windows: [3, 6, 12]
+    create_interactions: false
+    polynomial_features: false
+
+# Market regime detection
+regimes:
+  enabled: true
+  types:
+    - expansion
+    - recession
+    - recovery
+  
+  # NBER recession dates
+  recession_periods:
+    - ['1990-07-01', '1991-03-01']
+    - ['2001-03-01', '2001-11-01']
+    - ['2007-12-01', '2009-06-01']
+    - ['2020-02-01', '2020-04-01']
+
+# Output settings
+output:
+  # File formats
+  save_csv: true
+  save_parquet: true
+  save_json: true
+  save_plots: true
+  
+  # Visualization settings
+  plots:
+    figure_size: [12, 8]
+    dpi: 100
+    style: 'seaborn-v0_8-darkgrid'
+    
+    # Types of plots to generate
+    generate:
+      - correlation_heatmap
+      - lead_lag_profiles
+      - rolling_correlations
+      - forecast_vs_actual
+      - residual_diagnostics
+      - feature_importance
+      - acf_pacf
+      - decomposition
+  
+  # Reporting
+  reports:
+    generate_summary: true
+    generate_detailed: true
+    include_diagnostics: true
+    confidence_intervals: [80, 95]
+    
+# Performance optimization
+performance:
+  parallel_processing: true
+  n_jobs: -1  # Use all available cores
+  chunk_size: 1000
+  memory_limit_gb: 8
+  
+# Logging settings
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: 'logs/analysis.log'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  max_bytes: 10485760  # 10MB
+  backup_count: 5

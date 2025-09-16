@@ -1,0 +1,26 @@
+# Development tools
+ipython>=8.14.0
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=7.0.0
+
+# Debugging
+ipdb>=0.13.0
+pudb>=2022.1.0
+snoop>=0.4.0
+
+# Profiling
+memory-profiler>=0.61.0
+line-profiler>=4.0.0
+py-spy>=0.3.0
+scalene>=1.5.0
+
+# Additional testing tools
+pytest-benchmark>=4.0.0
+pytest-mock>=3.11.0
+pytest-xdist>=3.3.0
+locust>=2.15.0
+
+# Documentation tools
+pydoc-markdown>=4.8.0
+autodoc>=0.5.0
