@@ -1,0 +1,811 @@
+name: codebase-improvement-swarm
+description: Comprehensive swarm-based workflow for codebase review, testing, optimization, and methodology improvement
+version: 2.0.0
+author: Advanced AI Swarm Orchestrator
+
+# Swarm configuration
+swarm:
+  max_concurrent_agents: 25
+  coordination_strategy: wave_parallel
+  fault_tolerance: true
+  performance_target: 600%
+  checkpoint_enabled: true
+
+# Swarm parameters
+parameters:
+  target_directory:
+    type: string
+    description: Root directory to analyze
+    default: .
+  analysis_depth:
+    type: integer
+    description: How deep to analyze the codebase (1-10)
+    default: 8
+  improvement_mode:
+    type: string
+    enum: [comprehensive, focused, quick, enterprise]
+    default: comprehensive
+  validation_level:
+    type: string
+    enum: [strict, standard, relaxed]
+    default: strict
+
+# Swarm configuration
+config:
+  batch_size: 10
+  parallel_waves: true
+  progressive_enhancement: true
+  ai_orchestration: true
+  real_time_monitoring: true
+  adaptive_routing: true
+
+# Wave-based swarm execution
+waves:
+  # Wave 1: Discovery and Assessment
+  - wave_id: discovery
+    name: Discovery and Assessment Wave
+    parallel_agents: 8
+    agents:
+      - id: code_scanner
+        type: analyzer
+        focus: structure
+        command: python agents/code_scanner.py
+        tasks:
+          - Map codebase architecture
+          - Identify component relationships
+          - Detect patterns and anti-patterns
+          - Generate dependency graph
+        outputs:
+          structure_map: reports/structure_map.json
+          dependency_graph: reports/dependencies.svg
+
+      - id: quality_assessor
+        type: qa
+        focus: code_quality
+        command: python agents/quality_assessor.py
+        tasks:
+          - Calculate complexity metrics
+          - Identify technical debt
+          - Assess maintainability index
+          - Detect code smells
+        outputs:
+          quality_report: reports/quality_assessment.md
+          technical_debt: reports/technical_debt.json
+
+      - id: security_scanner
+        type: security
+        focus: vulnerabilities
+        command: python agents/security_scanner.py
+        tasks:
+          - Scan for vulnerabilities
+          - Check for secrets/credentials
+          - Analyze authentication patterns
+          - Review access controls
+        outputs:
+          security_report: reports/security_scan.md
+          vulnerabilities: data/vulnerabilities.json
+
+      - id: performance_profiler
+        type: performance
+        focus: bottlenecks
+        command: python agents/performance_profiler.py
+        tasks:
+          - Profile execution paths
+          - Identify bottlenecks
+          - Analyze memory usage
+          - Detect inefficient algorithms
+        outputs:
+          performance_report: reports/performance_profile.md
+          bottlenecks: data/bottlenecks.json
+
+      - id: test_analyzer
+        type: qa
+        focus: test_coverage
+        command: python agents/test_analyzer.py
+        tasks:
+          - Analyze test coverage
+          - Identify untested paths
+          - Evaluate test quality
+          - Find missing edge cases
+        outputs:
+          test_report: reports/test_analysis.md
+          coverage_gaps: data/coverage_gaps.json
+
+      - id: documentation_auditor
+        type: scribe
+        focus: documentation
+        command: python agents/documentation_auditor.py
+        tasks:
+          - Audit documentation completeness
+          - Check API documentation
+          - Verify inline comments
+          - Assess README quality
+        outputs:
+          documentation_report: reports/documentation_audit.md
+          missing_docs: data/missing_documentation.json
+
+      - id: methodology_analyst
+        type: architect
+        focus: best_practices
+        command: python agents/methodology_analyst.py
+        tasks:
+          - Evaluate design patterns
+          - Check SOLID principles
+          - Assess architectural decisions
+          - Review coding standards
+        outputs:
+          methodology_report: reports/methodology_analysis.md
+          violations: data/principle_violations.json
+
+      - id: data_flow_tracer
+        type: analyzer
+        focus: data_integrity
+        command: python agents/data_flow_tracer.py
+        tasks:
+          - Trace data flow paths
+          - Verify data validation
+          - Check data transformations
+          - Identify data leaks
+        outputs:
+          data_flow_report: reports/data_flow.md
+          data_issues: data/data_integrity_issues.json
+
+    coordination:
+      sync_points: [25%, 50%, 75%, 100%]
+      result_aggregation: parallel
+      failure_strategy: continue_with_fallback
+
+  # Wave 2: Deep Analysis and Planning
+  - wave_id: analysis
+    name: Deep Analysis and Planning Wave
+    depends_on: [discovery]
+    parallel_agents: 10
+    agents:
+      - id: root_cause_analyzer
+        type: analyzer
+        focus: problem_diagnosis
+        inputs:
+          issues: ${discovery.all_outputs}
+        tasks:
+          - Identify root causes
+          - Correlate issues across domains
+          - Prioritize problems
+          - Generate fix strategies
+        outputs:
+          root_cause_analysis: reports/root_causes.md
+          fix_strategies: plans/fix_strategies.json
+
+      - id: refactoring_planner
+        type: refactorer
+        focus: code_improvement
+        inputs:
+          quality_issues: ${discovery.quality_assessor.outputs}
+        tasks:
+          - Plan refactoring strategies
+          - Identify refactoring targets
+          - Estimate improvement impact
+          - Create refactoring roadmap
+        outputs:
+          refactoring_plan: plans/refactoring_roadmap.md
+          impact_analysis: reports/refactoring_impact.json
+
+      - id: optimization_strategist
+        type: performance
+        focus: optimization_planning
+        inputs:
+          bottlenecks: ${discovery.performance_profiler.outputs}
+        tasks:
+          - Design optimization strategies
+          - Prioritize optimizations
+          - Estimate performance gains
+          - Plan implementation approach
+        outputs:
+          optimization_plan: plans/optimization_strategy.md
+          expected_gains: reports/performance_projections.json
+
+      - id: test_strategy_designer
+        type: qa
+        focus: test_planning
+        inputs:
+          coverage_gaps: ${discovery.test_analyzer.outputs}
+        tasks:
+          - Design comprehensive test strategy
+          - Plan test implementation
+          - Prioritize test creation
+          - Define test metrics
+        outputs:
+          test_strategy: plans/test_strategy.md
+          test_priorities: plans/test_priorities.json
+
+      - id: security_hardening_planner
+        type: security
+        focus: security_improvement
+        inputs:
+          vulnerabilities: ${discovery.security_scanner.outputs}
+        tasks:
+          - Plan security hardening
+          - Prioritize vulnerabilities
+          - Design mitigation strategies
+          - Create security roadmap
+        outputs:
+          security_plan: plans/security_hardening.md
+          mitigation_strategies: plans/mitigations.json
+
+      - id: architecture_improver
+        type: architect
+        focus: architectural_enhancement
+        inputs:
+          methodology_issues: ${discovery.methodology_analyst.outputs}
+        tasks:
+          - Design architectural improvements
+          - Plan pattern implementations
+          - Create migration strategies
+          - Define quality gates
+        outputs:
+          architecture_plan: plans/architecture_improvements.md
+          migration_plan: plans/migration_strategy.json
+
+      - id: documentation_strategist
+        type: scribe
+        focus: documentation_planning
+        inputs:
+          documentation_gaps: ${discovery.documentation_auditor.outputs}
+        tasks:
+          - Plan documentation improvements
+          - Prioritize documentation needs
+          - Design documentation structure
+          - Create documentation roadmap
+        outputs:
+          documentation_plan: plans/documentation_strategy.md
+          doc_priorities: plans/documentation_priorities.json
+
+      - id: ml_pattern_detector
+        type: ml_analyzer
+        focus: pattern_learning
+        inputs:
+          all_data: ${discovery.all_outputs}
+        tasks:
+          - Detect hidden patterns
+          - Learn from codebase evolution
+          - Predict future issues
+          - Suggest preventive measures
+        outputs:
+          pattern_analysis: reports/ml_patterns.md
+          predictions: data/future_predictions.json
+
+      - id: dependency_optimizer
+        type: architect
+        focus: dependency_management
+        inputs:
+          dependencies: ${discovery.code_scanner.outputs.dependency_graph}
+        tasks:
+          - Optimize dependency tree
+          - Identify circular dependencies
+          - Plan dependency updates
+          - Reduce coupling
+        outputs:
+          dependency_plan: plans/dependency_optimization.md
+          update_strategy: plans/dependency_updates.json
+
+      - id: integration_planner
+        type: devops
+        focus: ci_cd_improvement
+        inputs:
+          current_state: ${discovery.all_outputs}
+        tasks:
+          - Design CI/CD improvements
+          - Plan automation strategies
+          - Create deployment optimizations
+          - Define quality gates
+        outputs:
+          cicd_plan: plans/cicd_improvements.md
+          automation_strategy: plans/automation_roadmap.json
+
+    coordination:
+      sync_points: [20%, 40%, 60%, 80%, 100%]
+      cross_agent_communication: true
+      consensus_building: true
+
+  # Wave 3: Implementation and Enhancement
+  - wave_id: implementation
+    name: Implementation and Enhancement Wave
+    depends_on: [analysis]
+    parallel_agents: 12
+    agents:
+      - id: code_refactorer
+        type: refactorer
+        focus: code_improvement
+        inputs:
+          refactoring_plan: ${analysis.refactoring_planner.outputs}
+        tasks:
+          - Execute refactoring operations
+          - Improve code structure
+          - Apply design patterns
+          - Enhance readability
+        outputs:
+          refactored_files: changes/refactored/
+          refactoring_log: logs/refactoring.log
+
+      - id: performance_optimizer
+        type: performance
+        focus: optimization
+        inputs:
+          optimization_plan: ${analysis.optimization_strategist.outputs}
+        tasks:
+          - Implement optimizations
+          - Apply caching strategies
+          - Optimize algorithms
+          - Improve resource usage
+        outputs:
+          optimized_files: changes/optimized/
+          performance_gains: reports/performance_improvements.json
+
+      - id: security_hardener
+        type: security
+        focus: vulnerability_fixes
+        inputs:
+          security_plan: ${analysis.security_hardening_planner.outputs}
+        tasks:
+          - Fix vulnerabilities
+          - Implement security measures
+          - Add input validation
+          - Enhance authentication
+        outputs:
+          secured_files: changes/secured/
+          security_fixes: reports/security_improvements.json
+
+      - id: test_generator
+        type: qa
+        focus: test_creation
+        inputs:
+          test_strategy: ${analysis.test_strategy_designer.outputs}
+        tasks:
+          - Generate unit tests
+          - Create integration tests
+          - Build E2E tests
+          - Add edge case tests
+        outputs:
+          test_files: tests/generated/
+          coverage_report: reports/new_coverage.html
+
+      - id: documentation_generator
+        type: scribe
+        focus: documentation_creation
+        inputs:
+          documentation_plan: ${analysis.documentation_strategist.outputs}
+        tasks:
+          - Generate API documentation
+          - Create user guides
+          - Write code comments
+          - Update README files
+        outputs:
+          documentation: docs/generated/
+          documentation_index: docs/index.md
+
+      - id: type_safety_enhancer
+        type: backend
+        focus: type_improvements
+        inputs:
+          code_analysis: ${discovery.code_scanner.outputs}
+        tasks:
+          - Add type definitions
+          - Implement type guards
+          - Create interfaces
+          - Enhance type safety
+        outputs:
+          typed_files: changes/typed/
+          type_coverage: reports/type_coverage.json
+
+      - id: error_handler_improver
+        type: backend
+        focus: error_handling
+        inputs:
+          issues: ${discovery.all_outputs}
+        tasks:
+          - Improve error handling
+          - Add recovery mechanisms
+          - Implement logging
+          - Create error boundaries
+        outputs:
+          error_handling: changes/error_handling/
+          error_report: reports/error_improvements.json
+
+      - id: accessibility_enhancer
+        type: frontend
+        focus: accessibility
+        inputs:
+          ui_analysis: ${discovery.code_scanner.outputs}
+        tasks:
+          - Improve accessibility
+          - Add ARIA labels
+          - Enhance keyboard navigation
+          - Fix color contrast
+        outputs:
+          accessible_files: changes/accessibility/
+          wcag_report: reports/accessibility_compliance.json
+
+      - id: database_optimizer
+        type: backend
+        focus: database_performance
+        inputs:
+          performance_data: ${discovery.performance_profiler.outputs}
+        tasks:
+          - Optimize queries
+          - Add indexes
+          - Improve schema
+          - Cache database calls
+        outputs:
+          db_optimizations: changes/database/
+          query_improvements: reports/database_performance.json
+
+      - id: api_enhancer
+        type: backend
+        focus: api_improvement
+        inputs:
+          api_analysis: ${discovery.all_outputs}
+        tasks:
+          - Improve API design
+          - Add versioning
+          - Enhance validation
+          - Implement rate limiting
+        outputs:
+          api_improvements: changes/api/
+          api_report: reports/api_enhancements.json
+
+      - id: monitoring_implementer
+        type: devops
+        focus: observability
+        inputs:
+          current_gaps: ${discovery.all_outputs}
+        tasks:
+          - Add monitoring
+          - Implement metrics
+          - Create dashboards
+          - Set up alerts
+        outputs:
+          monitoring_config: config/monitoring/
+          observability_report: reports/monitoring_setup.json
+
+      - id: configuration_optimizer
+        type: devops
+        focus: configuration
+        inputs:
+          config_analysis: ${discovery.all_outputs}
+        tasks:
+          - Optimize configurations
+          - Add environment variables
+          - Improve build configs
+          - Enhance deployment settings
+        outputs:
+          config_files: config/optimized/
+          config_report: reports/configuration_improvements.json
+
+    coordination:
+      parallel_execution: true
+      conflict_resolution: automated
+      rollback_capability: true
+
+  # Wave 4: Validation and Quality Assurance
+  - wave_id: validation
+    name: Validation and Quality Assurance Wave
+    depends_on: [implementation]
+    parallel_agents: 8
+    agents:
+      - id: regression_tester
+        type: qa
+        focus: regression_testing
+        inputs:
+          changes: ${implementation.all_outputs}
+        tasks:
+          - Run regression tests
+          - Verify no breaking changes
+          - Test backward compatibility
+          - Validate integrations
+        outputs:
+          regression_report: reports/regression_testing.md
+          test_results: data/regression_results.json
+
+      - id: performance_validator
+        type: performance
+        focus: performance_validation
+        inputs:
+          optimizations: ${implementation.performance_optimizer.outputs}
+        tasks:
+          - Benchmark improvements
+          - Validate performance gains
+          - Test under load
+          - Measure resource usage
+        outputs:
+          performance_validation: reports/performance_validation.md
+          benchmarks: data/performance_benchmarks.json
+
+      - id: security_validator
+        type: security
+        focus: security_validation
+        inputs:
+          security_changes: ${implementation.security_hardener.outputs}
+        tasks:
+          - Validate security fixes
+          - Run penetration tests
+          - Check compliance
+          - Verify authentication
+        outputs:
+          security_validation: reports/security_validation.md
+          pentest_results: data/penetration_test.json
+
+      - id: code_quality_validator
+        type: qa
+        focus: quality_validation
+        inputs:
+          refactored_code: ${implementation.code_refactorer.outputs}
+        tasks:
+          - Validate code quality
+          - Check maintainability
+          - Verify standards compliance
+          - Assess readability
+        outputs:
+          quality_validation: reports/quality_validation.md
+          quality_metrics: data/quality_metrics.json
+
+      - id: integration_validator
+        type: qa
+        focus: integration_testing
+        inputs:
+          all_changes: ${implementation.all_outputs}
+        tasks:
+          - Test component integration
+          - Validate data flow
+          - Check API contracts
+          - Verify system behavior
+        outputs:
+          integration_report: reports/integration_validation.md
+          integration_results: data/integration_tests.json
+
+      - id: user_experience_validator
+        type: frontend
+        focus: ux_validation
+        inputs:
+          ui_changes: ${implementation.all_outputs}
+        tasks:
+          - Validate user flows
+          - Test accessibility
+          - Check responsive design
+          - Verify interactions
+        outputs:
+          ux_validation: reports/ux_validation.md
+          usability_metrics: data/usability_scores.json
+
+      - id: documentation_validator
+        type: scribe
+        focus: documentation_validation
+        inputs:
+          new_docs: ${implementation.documentation_generator.outputs}
+        tasks:
+          - Validate documentation accuracy
+          - Check completeness
+          - Verify examples work
+          - Test tutorials
+        outputs:
+          doc_validation: reports/documentation_validation.md
+          doc_coverage: data/documentation_coverage.json
+
+      - id: compliance_validator
+        type: architect
+        focus: standards_compliance
+        inputs:
+          all_changes: ${implementation.all_outputs}
+        tasks:
+          - Validate architectural compliance
+          - Check coding standards
+          - Verify best practices
+          - Assess design patterns
+        outputs:
+          compliance_report: reports/compliance_validation.md
+          compliance_scores: data/compliance_metrics.json
+
+    coordination:
+      validation_gates: true
+      consensus_required: true
+      rollback_on_failure: true
+
+  # Wave 5: Synthesis and Recommendations
+  - wave_id: synthesis
+    name: Synthesis and Recommendations Wave
+    depends_on: [validation]
+    parallel_agents: 5
+    agents:
+      - id: result_synthesizer
+        type: architect
+        focus: result_aggregation
+        inputs:
+          all_results: ${validation.all_outputs}
+        tasks:
+          - Synthesize all findings
+          - Create executive summary
+          - Generate metrics dashboard
+          - Compile improvement list
+        outputs:
+          synthesis_report: reports/final_synthesis.md
+          metrics_dashboard: visualizations/dashboard.html
+
+      - id: recommendation_generator
+        type: mentor
+        focus: future_improvements
+        inputs:
+          analysis_data: ${all_waves.outputs}
+        tasks:
+          - Generate recommendations
+          - Prioritize future work
+          - Create learning points
+          - Suggest best practices
+        outputs:
+          recommendations: reports/recommendations.md
+          roadmap: plans/future_roadmap.md
+
+      - id: knowledge_extractor
+        type: ml_analyzer
+        focus: learning_extraction
+        inputs:
+          all_data: ${all_waves.outputs}
+        tasks:
+          - Extract patterns learned
+          - Document insights
+          - Create knowledge base
+          - Build prediction models
+        outputs:
+          knowledge_base: knowledge/extracted_patterns.json
+          insights: reports/key_insights.md
+
+      - id: report_generator
+        type: scribe
+        focus: final_reporting
+        inputs:
+          all_outputs: ${all_waves.outputs}
+        tasks:
+          - Generate final report
+          - Create change log
+          - Document improvements
+          - Build presentation
+        outputs:
+          final_report: reports/codebase_improvement_report.md
+          changelog: CHANGELOG_IMPROVEMENTS.md
+          presentation: reports/executive_presentation.html
+
+      - id: continuous_improvement_planner
+        type: devops
+        focus: automation_setup
+        inputs:
+          learnings: ${all_waves.outputs}
+        tasks:
+          - Setup continuous monitoring
+          - Create automation scripts
+          - Define quality gates
+          - Build feedback loops
+        outputs:
+          automation_setup: automation/ci_improvements/
+          monitoring_config: config/continuous_monitoring.yaml
+
+    coordination:
+      final_synthesis: true
+      consensus_building: true
+      knowledge_preservation: true
+
+# Swarm orchestration rules
+orchestration:
+  failure_handling:
+    strategy: resilient
+    retry_attempts: 3
+    fallback_agents: true
+    checkpoint_recovery: true
+
+  performance_optimization:
+    batch_processing: true
+    cache_results: true
+    parallel_waves: true
+    resource_pooling: true
+
+  communication:
+    inter_agent_messaging: true
+    shared_memory: true
+    event_broadcasting: true
+    result_aggregation: true
+
+  monitoring:
+    real_time_tracking: true
+    performance_metrics: true
+    resource_usage: true
+    progress_reporting: true
+
+  quality_control:
+    validation_gates: true
+    quality_thresholds: true
+    automated_rollback: true
+    evidence_collection: true
+
+# Integration with existing systems
+integrations:
+  dart_mcp:
+    enabled: true
+    task_creation: automatic
+    progress_tracking: real_time
+    dartboard: "Rent Growth Analysis/Swarm Tasks"
+
+  hooks:
+    pre_wave: validate_environment
+    post_wave: update_progress
+    on_failure: trigger_recovery
+    on_success: mark_complete
+
+  existing_agents:
+    reuse: true
+    enhancement: true
+    coordination: true
+
+  claude_flow:
+    swarm_mode: enabled
+    parallel_agents: 25
+    performance_target: 600%
+
+# Execution profiles
+profiles:
+  quick:
+    waves: [discovery, analysis]
+    agents_per_wave: 5
+    time_limit: 30_minutes
+
+  standard:
+    waves: [discovery, analysis, implementation, validation]
+    agents_per_wave: 8
+    time_limit: 2_hours
+
+  comprehensive:
+    waves: all
+    agents_per_wave: 12
+    time_limit: 8_hours
+
+  enterprise:
+    waves: all
+    agents_per_wave: 25
+    time_limit: 24_hours
+    enhanced_validation: true
+    compliance_checks: true
+
+# Success metrics
+metrics:
+  code_quality:
+    target_improvement: 40%
+    maintainability_index: 70
+    technical_debt_reduction: 30%
+
+  performance:
+    response_time_improvement: 50%
+    resource_usage_reduction: 30%
+    throughput_increase: 60%
+
+  security:
+    vulnerability_reduction: 90%
+    compliance_score: 100%
+    security_rating: A
+
+  testing:
+    coverage_target: 80%
+    test_quality_score: 85
+    edge_case_coverage: 70%
+
+  documentation:
+    coverage_target: 90%
+    accuracy_score: 95%
+    completeness: 85%
+
+# Notifications
+notifications:
+  on_wave_complete:
+    message: "Wave ${wave.id} completed with ${wave.success_rate}% success"
+
+  on_critical_finding:
+    priority: high
+    message: "Critical issue found: ${finding.description}"
+
+  on_completion:
+    message: "Swarm execution complete. ${metrics.overall_improvement}% improvement achieved"
+    attachments: [final_report, metrics_dashboard]

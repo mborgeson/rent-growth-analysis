@@ -1,0 +1,129 @@
+{
+  "checkpoint": {
+    "wave_id": "analysis",
+    "timestamp": "2025-09-16T06:02:19.167106",
+    "success_rate": 100.0,
+    "context_hash": "9aeb2ceb1518b846e00879034ef6c667"
+  },
+  "context": {
+    "parameters": {
+      "target_directory": ".",
+      "analysis_depth": 8,
+      "improvement_mode": "comprehensive",
+      "validation_level": "strict",
+      "profile": "quick"
+    },
+    "discovery.code_scanner.outputs.structure_map": "reports/structure_map.json",
+    "discovery.code_scanner.outputs.dependency_graph": "reports/dependencies.svg",
+    "discovery.quality_assessor.outputs.quality_report": "reports/quality_assessment.md",
+    "discovery.quality_assessor.outputs.technical_debt": "reports/technical_debt.json",
+    "discovery.security_scanner.outputs.security_report": "reports/security_scan.md",
+    "discovery.security_scanner.outputs.vulnerabilities": "data/vulnerabilities.json",
+    "discovery.performance_profiler.outputs.performance_report": "reports/performance_profile.md",
+    "discovery.performance_profiler.outputs.bottlenecks": "data/bottlenecks.json",
+    "discovery.test_analyzer.outputs.test_report": "reports/test_analysis.md",
+    "discovery.test_analyzer.outputs.coverage_gaps": "data/coverage_gaps.json",
+    "discovery.documentation_auditor.outputs.documentation_report": "reports/documentation_audit.md",
+    "discovery.documentation_auditor.outputs.missing_docs": "data/missing_documentation.json",
+    "discovery.methodology_analyst.outputs.methodology_report": "reports/methodology_analysis.md",
+    "discovery.methodology_analyst.outputs.violations": "data/principle_violations.json",
+    "discovery.data_flow_tracer.outputs.data_flow_report": "reports/data_flow.md",
+    "discovery.data_flow_tracer.outputs.data_issues": "data/data_integrity_issues.json",
+    "discovery.all_outputs": {
+      "code_scanner": {
+        "structure_map": "reports/structure_map.json",
+        "dependency_graph": "reports/dependencies.svg"
+      },
+      "quality_assessor": {
+        "quality_report": "reports/quality_assessment.md",
+        "technical_debt": "reports/technical_debt.json"
+      },
+      "security_scanner": {
+        "security_report": "reports/security_scan.md",
+        "vulnerabilities": "data/vulnerabilities.json"
+      },
+      "performance_profiler": {
+        "performance_report": "reports/performance_profile.md",
+        "bottlenecks": "data/bottlenecks.json"
+      },
+      "test_analyzer": {
+        "test_report": "reports/test_analysis.md",
+        "coverage_gaps": "data/coverage_gaps.json"
+      },
+      "documentation_auditor": {
+        "documentation_report": "reports/documentation_audit.md",
+        "missing_docs": "data/missing_documentation.json"
+      },
+      "methodology_analyst": {
+        "methodology_report": "reports/methodology_analysis.md",
+        "violations": "data/principle_violations.json"
+      },
+      "data_flow_tracer": {
+        "data_flow_report": "reports/data_flow.md",
+        "data_issues": "data/data_integrity_issues.json"
+      }
+    },
+    "analysis.root_cause_analyzer.outputs.root_cause_analysis": "reports/root_causes.md",
+    "analysis.root_cause_analyzer.outputs.fix_strategies": "plans/fix_strategies.json",
+    "analysis.refactoring_planner.outputs.refactoring_plan": "plans/refactoring_roadmap.md",
+    "analysis.refactoring_planner.outputs.impact_analysis": "reports/refactoring_impact.json",
+    "analysis.optimization_strategist.outputs.optimization_plan": "plans/optimization_strategy.md",
+    "analysis.optimization_strategist.outputs.expected_gains": "reports/performance_projections.json",
+    "analysis.test_strategy_designer.outputs.test_strategy": "plans/test_strategy.md",
+    "analysis.test_strategy_designer.outputs.test_priorities": "plans/test_priorities.json",
+    "analysis.security_hardening_planner.outputs.security_plan": "plans/security_hardening.md",
+    "analysis.security_hardening_planner.outputs.mitigation_strategies": "plans/mitigations.json",
+    "analysis.architecture_improver.outputs.architecture_plan": "plans/architecture_improvements.md",
+    "analysis.architecture_improver.outputs.migration_plan": "plans/migration_strategy.json",
+    "analysis.documentation_strategist.outputs.documentation_plan": "plans/documentation_strategy.md",
+    "analysis.documentation_strategist.outputs.doc_priorities": "plans/documentation_priorities.json",
+    "analysis.ml_pattern_detector.outputs.pattern_analysis": "reports/ml_patterns.md",
+    "analysis.ml_pattern_detector.outputs.predictions": "data/future_predictions.json",
+    "analysis.dependency_optimizer.outputs.dependency_plan": "plans/dependency_optimization.md",
+    "analysis.dependency_optimizer.outputs.update_strategy": "plans/dependency_updates.json",
+    "analysis.integration_planner.outputs.cicd_plan": "plans/cicd_improvements.md",
+    "analysis.integration_planner.outputs.automation_strategy": "plans/automation_roadmap.json",
+    "analysis.all_outputs": {
+      "root_cause_analyzer": {
+        "root_cause_analysis": "reports/root_causes.md",
+        "fix_strategies": "plans/fix_strategies.json"
+      },
+      "refactoring_planner": {
+        "refactoring_plan": "plans/refactoring_roadmap.md",
+        "impact_analysis": "reports/refactoring_impact.json"
+      },
+      "optimization_strategist": {
+        "optimization_plan": "plans/optimization_strategy.md",
+        "expected_gains": "reports/performance_projections.json"
+      },
+      "test_strategy_designer": {
+        "test_strategy": "plans/test_strategy.md",
+        "test_priorities": "plans/test_priorities.json"
+      },
+      "security_hardening_planner": {
+        "security_plan": "plans/security_hardening.md",
+        "mitigation_strategies": "plans/mitigations.json"
+      },
+      "architecture_improver": {
+        "architecture_plan": "plans/architecture_improvements.md",
+        "migration_plan": "plans/migration_strategy.json"
+      },
+      "documentation_strategist": {
+        "documentation_plan": "plans/documentation_strategy.md",
+        "doc_priorities": "plans/documentation_priorities.json"
+      },
+      "ml_pattern_detector": {
+        "pattern_analysis": "reports/ml_patterns.md",
+        "predictions": "data/future_predictions.json"
+      },
+      "dependency_optimizer": {
+        "dependency_plan": "plans/dependency_optimization.md",
+        "update_strategy": "plans/dependency_updates.json"
+      },
+      "integration_planner": {
+        "cicd_plan": "plans/cicd_improvements.md",
+        "automation_strategy": "plans/automation_roadmap.json"
+      }
+    }
+  }
+}

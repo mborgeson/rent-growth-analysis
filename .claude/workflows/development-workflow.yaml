@@ -1,0 +1,252 @@
+name: development-workflow
+description: Standardized development workflow for features and improvements
+version: 1.0.0
+author: Development Team
+
+# Development parameters
+parameters:
+  feature_name:
+    type: string
+    description: Name of the feature being developed
+    required: true
+  feature_type:
+    type: string
+    enum: [feature, bugfix, enhancement, refactor, docs]
+    default: feature
+  priority:
+    type: string
+    enum: [critical, high, medium, low]
+    default: medium
+
+# Workflow configuration
+config:
+  branch_strategy: feature_branch
+  code_review_required: true
+  testing_required: true
+  documentation_required: true
+
+# Development stages
+stages:
+  - id: planning
+    name: Feature Planning
+    type: planning
+    steps:
+      - create_spec:
+          name: Create Feature Specification
+          template: templates/feature_spec.md
+          outputs:
+            spec: .claude/specs/${parameters.feature_name}/requirements.md
+      - design_review:
+          name: Architecture Design
+          template: templates/design_doc.md
+          outputs:
+            design: .claude/specs/${parameters.feature_name}/design.md
+      - task_breakdown:
+          name: Break Down Tasks
+          tool: dart_mcp
+          dartboard: "Rent Growth Analysis/Tasks"
+          outputs:
+            tasks: .claude/specs/${parameters.feature_name}/tasks.md
+
+  - id: setup
+    name: Development Setup
+    type: setup
+    depends_on: [planning]
+    steps:
+      - create_branch:
+          name: Create Feature Branch
+          command: git checkout -b ${parameters.feature_type}/${parameters.feature_name}
+      - setup_environment:
+          name: Setup Development Environment
+          commands:
+            - python -m venv venv
+            - source venv/bin/activate
+            - pip install -r requirements.txt
+            - pip install -r requirements-dev.txt
+      - create_structure:
+          name: Create File Structure
+          directories:
+            - tests/${parameters.feature_name}/
+            - docs/${parameters.feature_name}/
+            - config/${parameters.feature_name}/
+
+  - id: implementation
+    name: Feature Implementation
+    type: development
+    depends_on: [setup]
+    parallel: false
+    phases:
+      - core_implementation:
+          name: Implement Core Functionality
+          validation:
+            - lint: flake8 --config=.flake8
+            - type_check: mypy --config-file=mypy.ini
+          outputs:
+            code: ${project.source_files}
+      - test_development:
+          name: Develop Tests
+          test_types:
+            - unit:
+                framework: pytest
+                coverage_threshold: 80
+            - integration:
+                framework: pytest
+                markers: integration
+            - performance:
+                framework: pytest-benchmark
+                optional: true
+          outputs:
+            tests: tests/${parameters.feature_name}/
+      - documentation:
+          name: Write Documentation
+          docs_types:
+            - api_docs:
+                tool: sphinx
+                format: rst
+            - user_guide:
+                format: markdown
+                path: docs/user_guide/
+            - inline_docs:
+                standard: numpy_docstring
+          outputs:
+            docs: docs/${parameters.feature_name}/
+
+  - id: validation
+    name: Quality Validation
+    type: validation
+    depends_on: [implementation]
+    parallel: true
+    checks:
+      - code_quality:
+          name: Code Quality Check
+          tools:
+            - flake8: flake8 . --count --statistics
+            - black: black --check .
+            - isort: isort --check-only .
+            - pylint: pylint --rcfile=.pylintrc
+      - security_scan:
+          name: Security Vulnerability Scan
+          tools:
+            - bandit: bandit -r . -f json
+            - safety: safety check --json
+          hooks:
+            - secret-scanner.py
+      - test_execution:
+          name: Run Test Suite
+          commands:
+            - pytest tests/ --cov=. --cov-report=html
+            - pytest tests/ --benchmark-only
+          required_coverage: 80
+      - documentation_check:
+          name: Documentation Validation
+          checks:
+            - docstring_coverage: interrogate -v .
+            - markdown_lint: markdownlint docs/
+            - spell_check: aspell check docs/*.md
+
+  - id: integration
+    name: Integration Testing
+    type: integration
+    depends_on: [validation]
+    steps:
+      - agent_testing:
+          name: Test Agent Integration
+          command: python tests/integration/test_agents.py
+      - pipeline_testing:
+          name: Test Data Pipeline
+          command: python tests/integration/test_pipeline.py
+      - end_to_end:
+          name: End-to-End Testing
+          command: python tests/e2e/test_full_workflow.py
+
+  - id: review
+    name: Code Review Process
+    type: review
+    depends_on: [integration]
+    steps:
+      - create_pr:
+          name: Create Pull Request
+          template: .github/pull_request_template.md
+          reviewers: [auto_assign]
+          labels: [${parameters.feature_type}, ${parameters.priority}]
+      - address_feedback:
+          name: Address Review Feedback
+          iterate_until: approved
+      - final_checks:
+          name: Final Quality Checks
+          checks:
+            - ci_passing: true
+            - conflicts_resolved: true
+            - approvals_received: 1
+
+  - id: deployment
+    name: Feature Deployment
+    type: deployment
+    depends_on: [review]
+    steps:
+      - merge:
+          name: Merge to Main Branch
+          strategy: squash_and_merge
+          delete_branch: true
+      - update_docs:
+          name: Update Documentation
+          commands:
+            - python scripts/update_docs.py
+            - git push origin docs
+      - update_claude_md:
+          name: Update CLAUDE.md
+          command: python scripts/update_claude_instructions.py
+      - create_release_notes:
+          name: Generate Release Notes
+          template: templates/release_notes.md
+          output: RELEASE_NOTES.md
+
+  - id: post_deployment
+    name: Post-Deployment Tasks
+    type: monitoring
+    depends_on: [deployment]
+    steps:
+      - update_dart:
+          name: Update Dart Tasks
+          tool: dart_mcp
+          action: mark_completed
+      - monitor_metrics:
+          name: Monitor Performance
+          duration: 24h
+          metrics: [execution_time, memory_usage, error_rate]
+      - gather_feedback:
+          name: Collect User Feedback
+          methods: [logs, user_reports, metrics]
+
+# Hooks integration
+hooks:
+  pre_commit:
+    - pre-commit-validator.py
+    - validate-git-commit.py
+    - secret-scanner.py
+  pre_push:
+    - style-consistency.py
+    - duplicate-detector.py
+  post_merge:
+    - readme-update-validator.py
+    - api-docs-enforcer.py
+
+# Rollback strategy
+rollback:
+  trigger_conditions:
+    - error_rate > 0.1
+    - performance_degradation > 20%
+    - critical_bug_detected: true
+  steps:
+    - revert_commit: git revert HEAD
+    - notify_team: true
+    - create_hotfix_branch: true
+
+# Notifications
+notifications:
+  slack:
+    channel: "#development"
+    events: [started, blocked, completed, failed]
+  email:
+    recipients: [team@example.com]
+    events: [failed, completed]

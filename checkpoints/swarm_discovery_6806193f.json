@@ -1,0 +1,67 @@
+{
+  "checkpoint": {
+    "wave_id": "discovery",
+    "timestamp": "2025-09-16T06:02:16.719018",
+    "success_rate": 100.0,
+    "context_hash": "6806193f0a08c005ce66b0979b8149b7"
+  },
+  "context": {
+    "parameters": {
+      "target_directory": ".",
+      "analysis_depth": 8,
+      "improvement_mode": "comprehensive",
+      "validation_level": "strict",
+      "profile": "quick"
+    },
+    "discovery.code_scanner.outputs.structure_map": "reports/structure_map.json",
+    "discovery.code_scanner.outputs.dependency_graph": "reports/dependencies.svg",
+    "discovery.quality_assessor.outputs.quality_report": "reports/quality_assessment.md",
+    "discovery.quality_assessor.outputs.technical_debt": "reports/technical_debt.json",
+    "discovery.security_scanner.outputs.security_report": "reports/security_scan.md",
+    "discovery.security_scanner.outputs.vulnerabilities": "data/vulnerabilities.json",
+    "discovery.performance_profiler.outputs.performance_report": "reports/performance_profile.md",
+    "discovery.performance_profiler.outputs.bottlenecks": "data/bottlenecks.json",
+    "discovery.test_analyzer.outputs.test_report": "reports/test_analysis.md",
+    "discovery.test_analyzer.outputs.coverage_gaps": "data/coverage_gaps.json",
+    "discovery.documentation_auditor.outputs.documentation_report": "reports/documentation_audit.md",
+    "discovery.documentation_auditor.outputs.missing_docs": "data/missing_documentation.json",
+    "discovery.methodology_analyst.outputs.methodology_report": "reports/methodology_analysis.md",
+    "discovery.methodology_analyst.outputs.violations": "data/principle_violations.json",
+    "discovery.data_flow_tracer.outputs.data_flow_report": "reports/data_flow.md",
+    "discovery.data_flow_tracer.outputs.data_issues": "data/data_integrity_issues.json",
+    "discovery.all_outputs": {
+      "code_scanner": {
+        "structure_map": "reports/structure_map.json",
+        "dependency_graph": "reports/dependencies.svg"
+      },
+      "quality_assessor": {
+        "quality_report": "reports/quality_assessment.md",
+        "technical_debt": "reports/technical_debt.json"
+      },
+      "security_scanner": {
+        "security_report": "reports/security_scan.md",
+        "vulnerabilities": "data/vulnerabilities.json"
+      },
+      "performance_profiler": {
+        "performance_report": "reports/performance_profile.md",
+        "bottlenecks": "data/bottlenecks.json"
+      },
+      "test_analyzer": {
+        "test_report": "reports/test_analysis.md",
+        "coverage_gaps": "data/coverage_gaps.json"
+      },
+      "documentation_auditor": {
+        "documentation_report": "reports/documentation_audit.md",
+        "missing_docs": "data/missing_documentation.json"
+      },
+      "methodology_analyst": {
+        "methodology_report": "reports/methodology_analysis.md",
+        "violations": "data/principle_violations.json"
+      },
+      "data_flow_tracer": {
+        "data_flow_report": "reports/data_flow.md",
+        "data_issues": "data/data_integrity_issues.json"
+      }
+    }
+  }
+}

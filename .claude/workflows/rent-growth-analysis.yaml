@@ -1,0 +1,146 @@
+name: rent-growth-analysis
+description: Complete rent growth analysis workflow with multi-agent orchestration
+version: 1.0.0
+author: Rent Growth Analysis Team
+
+# Workflow parameters
+parameters:
+  data_source:
+    type: string
+    description: Path to input data file
+    default: data/freddie_mac_rent_data.csv
+  output_dir:
+    type: string
+    description: Directory for analysis outputs
+    default: results/
+  analysis_period:
+    type: string
+    description: Time period for analysis
+    default: 2020-2024
+
+# Workflow configuration
+config:
+  parallel_execution: true
+  error_handling: continue_on_error
+  logging_level: info
+  checkpoint_enabled: true
+
+# Main workflow steps
+steps:
+  - id: data_validation
+    name: Validate Input Data
+    type: validation
+    agent: data_validator_agent
+    inputs:
+      data_file: ${parameters.data_source}
+    outputs:
+      validated_data: temp/validated_data.csv
+      validation_report: reports/data_validation.md
+    on_failure: halt
+
+  - id: data_preprocessing
+    name: Preprocess and Clean Data
+    type: transformation
+    agent: data_processing_agent
+    depends_on: [data_validation]
+    inputs:
+      raw_data: ${data_validation.outputs.validated_data}
+    outputs:
+      clean_data: temp/clean_data.csv
+      preprocessing_log: logs/preprocessing.log
+
+  - id: statistical_analysis
+    name: Run Statistical Analysis
+    type: analysis
+    agent: statistical_analysis_agent
+    depends_on: [data_preprocessing]
+    parallel: true
+    subtasks:
+      - name: Descriptive Statistics
+        command: python agents/statistical_analysis_agent.py --mode descriptive
+      - name: Time Series Decomposition
+        command: python agents/statistical_analysis_agent.py --mode decomposition
+      - name: Correlation Analysis
+        command: python agents/statistical_analysis_agent.py --mode correlation
+    inputs:
+      data: ${data_preprocessing.outputs.clean_data}
+    outputs:
+      statistics_report: reports/statistical_analysis.md
+      correlation_matrix: data/correlation_matrix.csv
+
+  - id: trend_analysis
+    name: Analyze Rent Growth Trends
+    type: analysis
+    agent: trend_analysis_agent
+    depends_on: [statistical_analysis]
+    inputs:
+      data: ${data_preprocessing.outputs.clean_data}
+      stats: ${statistical_analysis.outputs.statistics_report}
+    outputs:
+      trend_report: reports/trend_analysis.md
+      trend_data: data/trend_metrics.json
+
+  - id: forecasting
+    name: Generate Forecasts
+    type: prediction
+    agent: forecasting_agent
+    depends_on: [trend_analysis]
+    config:
+      models: [arima, prophet, lstm]
+      forecast_horizon: 12
+    inputs:
+      historical_data: ${data_preprocessing.outputs.clean_data}
+      trend_data: ${trend_analysis.outputs.trend_data}
+    outputs:
+      forecasts: data/forecasts.csv
+      model_performance: reports/model_performance.md
+
+  - id: visualization
+    name: Create Visualizations
+    type: visualization
+    agent: visualization_agent
+    depends_on: [statistical_analysis, trend_analysis, forecasting]
+    parallel: true
+    subtasks:
+      - name: Statistical Charts
+        output: visualizations/statistical_charts.html
+      - name: Trend Visualizations
+        output: visualizations/trend_charts.html
+      - name: Forecast Plots
+        output: visualizations/forecast_plots.html
+      - name: Interactive Dashboard
+        output: visualizations/dashboard.html
+    inputs:
+      stats_data: ${statistical_analysis.outputs}
+      trend_data: ${trend_analysis.outputs}
+      forecast_data: ${forecasting.outputs}
+
+  - id: report_generation
+    name: Generate Final Report
+    type: reporting
+    agent: report_generation_agent
+    depends_on: [visualization]
+    inputs:
+      all_outputs: ${workflow.all_outputs}
+    outputs:
+      final_report: reports/rent_growth_analysis_report.md
+      executive_summary: reports/executive_summary.md
+      technical_appendix: reports/technical_appendix.md
+
+# Error handling
+error_handlers:
+  - on_step_failure:
+      action: log_and_continue
+      notify: true
+  - on_workflow_failure:
+      action: save_checkpoint
+      cleanup: true
+
+# Notifications
+notifications:
+  on_start:
+    message: "Rent growth analysis workflow started"
+  on_complete:
+    message: "Analysis complete. Report available at: ${report_generation.outputs.final_report}"
+  on_error:
+    message: "Error in workflow step: ${error.step_id}"

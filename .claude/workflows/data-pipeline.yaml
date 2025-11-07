@@ -1,0 +1,208 @@
+name: data-processing-pipeline
+description: Automated data ingestion, cleaning, and preparation pipeline
+version: 1.0.0
+author: Data Engineering Team
+
+# Pipeline parameters
+parameters:
+  source_type:
+    type: string
+    enum: [csv, json, api, database]
+    default: csv
+  source_path:
+    type: string
+    description: Data source location
+  batch_size:
+    type: integer
+    default: 10000
+    description: Batch size for processing large datasets
+
+# Pipeline configuration
+config:
+  mode: streaming  # streaming or batch
+  retry_attempts: 3
+  timeout_seconds: 3600
+  checkpointing: true
+  parallel_workers: 4
+
+# Pipeline stages
+stages:
+  - id: ingestion
+    name: Data Ingestion
+    type: extract
+    parallel: true
+    sources:
+      - type: file
+        path: ${parameters.source_path}
+        format: ${parameters.source_type}
+      - type: api
+        endpoint: https://api.rentdata.gov/v2/markets
+        auth: bearer_token
+        optional: true
+    validation:
+      schema: schemas/rent_data_schema.json
+      fail_on_error: false
+    outputs:
+      raw_data: staging/raw_data/
+      ingestion_metrics: metrics/ingestion.json
+
+  - id: quality_check
+    name: Data Quality Assessment
+    type: quality
+    depends_on: [ingestion]
+    checks:
+      - completeness:
+          threshold: 0.95
+          required_columns: [date, location, rent_price]
+      - uniqueness:
+          columns: [property_id, date]
+      - validity:
+          date_format: YYYY-MM-DD
+          price_range: [0, 100000]
+      - consistency:
+          cross_field_rules:
+            - rule: "bedroom_count <= total_rooms"
+            - rule: "rent_price > 0"
+    inputs:
+      data: ${ingestion.outputs.raw_data}
+    outputs:
+      quality_report: reports/data_quality.html
+      clean_data: staging/validated_data/
+      rejected_records: staging/rejected/
+
+  - id: transformation
+    name: Data Transformation
+    type: transform
+    depends_on: [quality_check]
+    transformations:
+      - normalize_dates:
+          input_formats: [MM/DD/YYYY, YYYY-MM-DD, DD-MM-YYYY]
+          output_format: YYYY-MM-DD
+      - standardize_locations:
+          geocoding: true
+          add_regions: true
+      - calculate_metrics:
+          - year_over_year_growth
+          - quarter_over_quarter_growth
+          - moving_averages: [3, 6, 12]
+      - feature_engineering:
+          - seasonality_indicators
+          - trend_components
+          - market_segments
+    inputs:
+      validated_data: ${quality_check.outputs.clean_data}
+    outputs:
+      transformed_data: processed/transformed_data/
+      feature_matrix: processed/features/
+
+  - id: enrichment
+    name: Data Enrichment
+    type: enrich
+    depends_on: [transformation]
+    optional: true
+    enrichments:
+      - demographic_data:
+          source: census_api
+          join_keys: [zip_code, year]
+      - economic_indicators:
+          source: fred_api
+          metrics: [unemployment_rate, gdp_growth, inflation]
+      - market_data:
+          source: internal_db
+          tables: [competition, supply_demand]
+    inputs:
+      base_data: ${transformation.outputs.transformed_data}
+    outputs:
+      enriched_data: processed/enriched_data/
+
+  - id: aggregation
+    name: Create Aggregations
+    type: aggregate
+    depends_on: [enrichment, transformation]
+    aggregations:
+      - time_series:
+          groupby: [location, property_type]
+          frequency: [daily, weekly, monthly, quarterly, yearly]
+          metrics: [mean, median, std, min, max]
+      - geographic:
+          levels: [zip, city, county, state, region]
+          metrics: [average_rent, total_units, growth_rate]
+      - market_segments:
+          dimensions: [bedroom_count, property_type, price_range]
+          calculations: [market_share, price_index]
+    inputs:
+      enriched_data: ${enrichment.outputs.enriched_data}
+      transformed_data: ${transformation.outputs.transformed_data}
+    outputs:
+      aggregated_data: processed/aggregations/
+      summary_stats: reports/summary_statistics.json
+
+  - id: storage
+    name: Store Processed Data
+    type: load
+    depends_on: [aggregation]
+    destinations:
+      - type: file
+        format: parquet
+        path: data/processed/
+        partitioning: [year, month]
+      - type: database
+        connection: postgres://localhost/rentgrowth
+        table: fact_rent_metrics
+        mode: append
+        optional: true
+    inputs:
+      final_data: ${aggregation.outputs.aggregated_data}
+    outputs:
+      storage_manifest: manifests/data_storage.json
+      load_metrics: metrics/load_performance.json
+
+  - id: indexing
+    name: Create Data Indexes
+    type: index
+    depends_on: [storage]
+    indexes:
+      - search_index:
+          fields: [location, date, property_type]
+          type: btree
+      - time_series_index:
+          fields: [date, location]
+          type: temporal
+      - geo_spatial_index:
+          fields: [latitude, longitude]
+          type: spatial
+    outputs:
+      index_status: reports/indexing_status.json
+
+# Data quality rules
+quality_rules:
+  - name: date_consistency
+    rule: "MAX(date) - MIN(date) < 10 years"
+  - name: price_outliers
+    rule: "rent_price < 5 * STDDEV(rent_price) + MEAN(rent_price)"
+  - name: completeness
+    rule: "NULL_COUNT / TOTAL_COUNT < 0.05"
+
+# Error recovery
+error_recovery:
+  - stage: ingestion
+    strategy: retry_with_backoff
+    max_retries: 5
+  - stage: transformation
+    strategy: skip_bad_records
+    log_errors: true
+  - stage: storage
+    strategy: checkpoint_and_resume
+
+# Monitoring
+monitoring:
+  metrics:
+    - records_processed
+    - processing_time
+    - error_rate
+    - data_quality_score
+  alerts:
+    - condition: "error_rate > 0.05"
+      severity: warning
+    - condition: "processing_time > 3600"
+      severity: critical

@@ -85,3 +85,6 @@ docker-compose.override.yml
 monitoring/metrics/*.db
 monitoring/dashboards/*.json
 !monitoring/**/.gitkeep
+
+# Dart workspace configuration
+.dart

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "mfmbwlbc7oe7g6pas",
+    "command": "init",
+    "operation": "Project initialization",
+    "status": "in_progress",
+    "projectPath": "/home/mattb/Rent Growth Analysis",
+    "startTime": "2025-09-16T09:06:37.416Z",
+    "metadata": {
+      "aiEnabled": false,
+      "targetIDEs": [
+        "claude"
+      ]
+    },
+    "steps": [
+      {
+        "id": "mfmbwlbr7d8yhjw96",
+        "name": "Interactive setup wizard",
+        "status": "in_progress",
+        "startTime": "2025-09-16T09:06:37.431Z"
+      }
+    ]
+  },
+  {
+    "id": "mfmchvfaleoss634d",
+    "command": "init",
+    "operation": "Project initialization",
+    "status": "failed",
+    "projectPath": "/home/mattb/Rent Growth Analysis",
+    "startTime": "2025-09-16T09:23:10.294Z",
+    "endTime": "2025-09-16T09:24:40.437Z",
+    "duration": 90143,
+    "metadata": {
+      "aiEnabled": false,
+      "targetIDEs": [
+        "claude"
+      ],
+      "errors": [
+        "User force closed the prompt with SIGINT"
+      ]
+    },
+    "steps": [
+      {
+        "id": "mfmchvfnedp2eypq6",
+        "name": "Interactive setup wizard",
+        "status": "in_progress",
+        "startTime": "2025-09-16T09:23:10.307Z"
+      }
+    ]
+  },
+  {
+    "id": "mfmck7wbhug8rbkdq",
+    "command": "init",
+    "operation": "Project initialization",
+    "status": "failed",
+    "projectPath": "/home/mattb/Rent Growth Analysis",
+    "startTime": "2025-09-16T09:24:59.771Z",
+    "endTime": "2025-09-16T09:43:27.962Z",
+    "duration": 1108191,
+    "metadata": {
+      "aiEnabled": false,
+      "targetIDEs": [
+        "claude"
+      ],
+      "errors": [
+        "User force closed the prompt with SIGINT"
+      ]
+    },
+    "steps": [
+      {
+        "id": "mfmck7wpqqmjv1ob7",
+        "name": "Interactive setup wizard",
+        "status": "in_progress",
+        "startTime": "2025-09-16T09:24:59.785Z"
+      }
+    ]
+  },
+  {
+    "id": "mfmdb3vbeztmi96j5",
+    "command": "init",
+    "operation": "Project initialization",
+    "status": "failed",
+    "projectPath": "/home/mattb/Rent Growth Analysis",
+    "startTime": "2025-09-16T09:45:54.263Z",
+    "endTime": "2025-09-16T09:50:01.332Z",
+    "duration": 247069,
+    "metadata": {
+      "aiEnabled": false,
+      "targetIDEs": [
+        "claude"
+      ],
+      "errors": [
+        "User force closed the prompt with SIGINT"
+      ]
+    },
+    "steps": [
+      {
+        "id": "mfmdb3vopc8g0pizi",
+        "name": "Interactive setup wizard",
+        "status": "in_progress",
+        "startTime": "2025-09-16T09:45:54.276Z"
+      }
+    ]
+  },
+  {
+    "id": "mfmdhy100j8aj1dmu",
+    "command": "init",
+    "operation": "Project initialization",
+    "status": "failed",
+    "startTime": "2025-09-16T09:51:13.284Z",
+    "projectPath": "/home/mattb/Rent Growth Analysis",
+    "metadata": {
+      "aiEnabled": false,
+      "targetIDEs": [
+        "claude"
+      ],
+      "errors": [
+        "Unknown preset: --help. Available presets: nextjs-fastapi, react-express"
+      ]
+    },
+    "steps": [
+      {
+        "id": "mfmdhy1ac17wpom89",
+        "name": "Load preset configuration",
+        "status": "in_progress",
+        "startTime": "2025-09-16T09:51:13.295Z"
+      }
+    ],
+    "endTime": "2025-09-16T09:51:13.300Z",
+    "duration": 16
+  }
+]
