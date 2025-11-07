@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="B&amp;R Capital Real Estate Investment Analytics Dashboard">
+        <title>B&R Capital - Real Estate Analytics</title>
+        <link rel="icon" type="image/x-icon" href="/_favicon.ico?v=3.2.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css">
+    </head>
+    <body>
+        <!--[if IE]><script>
+        alert("Dash v2.7+ does not support Internet Explorer. Please use a newer browser.");
+        </script><![endif]-->
+        
+<div id="react-entry-point">
+    <div class="_dash-loading">
+        Loading...
+    </div>
+</div>
+
+        <footer>
+            <script id="_dash-config" type="application/json">{"url_base_pathname":null,"requests_pathname_prefix":"\u002f","ui":false,"props_check":false,"disable_version_check":false,"show_undo_redo":false,"suppress_callback_exceptions":true,"update_title":"Loading...","children_props":{"dash_core_components":{"Checklist":["options[].label"],"Clipboard":[],"ConfirmDialog":[],"ConfirmDialogProvider":[],"DatePickerRange":[],"DatePickerSingle":[],"Download":[],"Dropdown":["options[].label"],"Geolocation":[],"Graph":[],"Input":[],"Interval":[],"Link":[],"Loading":["custom_spinner"],"Location":[],"Markdown":[],"RadioItems":["options[].label"],"RangeSlider":[],"Slider":[],"Store":[],"Tab":[],"Tabs":[],"Textarea":[],"Tooltip":[],"Upload":[]},"dash_html_components":{"A":[],"Abbr":[],"Acronym":[],"Address":[],"Area":[],"Article":[],"Aside":[],"Audio":[],"B":[],"Base":[],"Basefont":[],"Bdi":[],"Bdo":[],"Big":[],"Blink":[],"Blockquote":[],"Br":[],"Button":[],"Canvas":[],"Caption":[],"Center":[],"Cite":[],"Code":[],"Col":[],"Colgroup":[],"Content":[],"Data":[],"Datalist":[],"Dd":[],"Del":[],"Details":[],"Dfn":[],"Dialog":[],"Div":[],"Dl":[],"Dt":[],"Em":[],"Embed":[],"Fieldset":[],"Figcaption":[],"Figure":[],"Font":[],"Footer":[],"Form":[],"Frame":[],"Frameset":[],"H1":[],"H2":[],"H3":[],"H4":[],"H5":[],"H6":[],"Header":[],"Hgroup":[],"Hr":[],"I":[],"Iframe":[],"Img":[],"Ins":[],"Kbd":[],"Keygen":[],"Label":[],"Legend":[],"Li":[],"Link":[],"Main":[],"MapEl":[],"Mark":[],"Marquee":[],"Meta":[],"Meter":[],"Nav":[],"Nobr":[],"Noscript":[],"ObjectEl":[],"Ol":[],"Optgroup":[],"Option":[],"Output":[],"P":[],"Param":[],"Picture":[],"Plaintext":[],"Pre":[],"Progress":[],"Q":[],"Rb":[],"Rp":[],"Rt":[],"Rtc":[],"Ruby":[],"S":[],"Samp":[],"Script":[],"Section":[],"Select":[],"Shadow":[],"Slot":[],"Small":[],"Source":[],"Spacer":[],"Span":[],"Strike":[],"Strong":[],"Sub":[],"Summary":[],"Sup":[],"Table":[],"Tbody":[],"Td":[],"Template":[],"Textarea":[],"Tfoot":[],"Th":[],"Thead":[],"Time":[],"Title":[],"Tr":[],"Track":[],"U":[],"Ul":[],"Var":[],"Video":[],"Wbr":[],"Xmp":[]},"dash_table":{"DataTable":[]},"dash_bootstrap_components":{"Accordion":[],"AccordionItem":["title"],"Alert":[],"Badge":[],"Breadcrumb":[],"Button":[],"ButtonGroup":[],"Card":[],"CardBody":[],"CardFooter":[],"CardGroup":[],"CardHeader":[],"CardImg":[],"CardImgOverlay":[],"CardLink":[],"Carousel":[],"Collapse":[],"DropdownMenu":["label"],"DropdownMenuItem":[],"Fade":[],"Form":[],"FormFeedback":[],"FormFloating":[],"FormText":[],"Label":[],"Checkbox":["label"],"Checklist":["options[].label"],"Input":[],"InputGroup":[],"InputGroupText":[],"RadioButton":["label"],"RadioItems":["options[].label"],"Select":[],"Switch":["label"],"Textarea":[],"Col":[],"Container":[],"Row":[],"Stack":[],"ListGroup":[],"ListGroupItem":[],"Modal":[],"ModalBody":[],"ModalFooter":[],"ModalHeader":[],"ModalTitle":[],"Nav":[],"NavItem":[],"NavLink":[],"Navbar":[],"NavbarBrand":[],"NavbarSimple":["brand"],"NavbarToggler":[],"Offcanvas":["title"],"Pagination":[],"Placeholder":[],"Popover":[],"PopoverBody":[],"PopoverHeader":[],"Progress":[],"Spinner":[],"Table":[],"Tab":[],"Tabs":[],"Toast":["header"],"Tooltip":[]}},"serve_locally":true,"dash_version":"3.2.0","python_version":"3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]","dash_version_url":"https:\u002f\u002fdash-version.plotly.com:8080\u002fcurrent_version","ddk_version":null,"plotly_version":"6.3.0"}</script>
+            <script src="/_dash-component-suites/dash/deps/polyfill@7.v3_2_0m1757483289.12.1.min.js"></script>
+<script src="/_dash-component-suites/dash/deps/react@18.v3_2_0m1757483289.3.1.min.js"></script>
+<script src="/_dash-component-suites/dash/deps/react-dom@18.v3_2_0m1757483289.3.1.min.js"></script>
+<script src="/_dash-component-suites/dash/deps/prop-types@15.v3_2_0m1757483289.8.1.min.js"></script>
+<script src="/_dash-component-suites/dash_bootstrap_components/_components/dash_bootstrap_components.v2_0_4m1757483289.min.js"></script>
+<script src="/_dash-component-suites/dash/dash-renderer/build/dash_renderer.v3_2_0m1757483289.min.js"></script>
+<script src="/_dash-component-suites/dash/dcc/dash_core_components.v3_2_0m1757483289.js"></script>
+<script src="/_dash-component-suites/dash/dcc/dash_core_components-shared.v3_2_0m1757483289.js"></script>
+<script src="/_dash-component-suites/dash/html/dash_html_components.v3_0_4m1757483289.min.js"></script>
+<script src="/_dash-component-suites/dash/dash_table/bundle.v6_0_4m1757483289.js"></script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["276be80f43a06fb736d740a09cba56a1d88662c0a98bb4a5b8eb7cc229e23638"] = 
+    function(pathname) {
+        // Update active navigation item based on current path
+        const navItems = document.querySelectorAll('.mobile-nav-item');
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === pathname || 
+                (pathname === '/' && item.getAttribute('href') === '/')) {
+                item.classList.add('active');
+            }
+        });
+        return window.dash_clientside.no_update;
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["23094cb49688385f4e68bb0a56c995c89020c8e57335d7dddabd11c69ecb85d0"] = 
+    function(n_clicks) {
+        // Initialize touch gesture detection
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+        
+        const handleTouchStart = (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        };
+        
+        const handleTouchEnd = (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleGesture();
+        };
+        
+        const handleGesture = () => {
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+            const minSwipeDistance = 50;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (Math.abs(deltaX) > minSwipeDistance) {
+                    if (deltaX > 0) {
+                        // Swipe right - previous page
+                        window.dispatchEvent(new CustomEvent('swipe-right'));
+                    } else {
+                        // Swipe left - next page
+                        window.dispatchEvent(new CustomEvent('swipe-left'));
+                    }
+                }
+            }
+        };
+        
+        // Add event listeners
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchend', handleTouchEnd, false);
+        
+        return {
+            'swipe_direction': null,
+            'touch_start': touchStartX,
+            'touch_end': touchEndX
+        };
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["bbb87f28376898b839efc3c8001e587503734c0cb2964b09fff4ca6ef629982e"] = 
+    function(pathname) {
+        let startY = 0;
+        let currentY = 0;
+        let pullDistance = 0;
+        const maxPullDistance = 100;
+        const refreshThreshold = 60;
+        
+        const handleTouchStart = (e) => {
+            startY = e.touches[0].clientY;
+        };
+        
+        const handleTouchMove = (e) => {
+            currentY = e.touches[0].clientY;
+            pullDistance = currentY - startY;
+            
+            if (pullDistance > 0 && window.scrollY === 0) {
+                e.preventDefault();
+                const indicator = document.getElementById('pull-to-refresh-indicator');
+                
+                if (indicator) {
+                    const progress = Math.min(pullDistance / maxPullDistance, 1);
+                    indicator.style.transform = `translateY(${pullDistance}px)`;
+                    indicator.style.opacity = progress;
+                    
+                    if (pullDistance > refreshThreshold) {
+                        indicator.classList.add('ready-to-refresh');
+                    } else {
+                        indicator.classList.remove('ready-to-refresh');
+                    }
+                }
+            }
+        };
+        
+        const handleTouchEnd = (e) => {
+            const indicator = document.getElementById('pull-to-refresh-indicator');
+            
+            if (pullDistance > refreshThreshold && window.scrollY === 0) {
+                // Trigger refresh
+                window.location.reload();
+            }
+            
+            if (indicator) {
+                indicator.style.transform = 'translateY(0)';
+                indicator.style.opacity = '0';
+                indicator.classList.remove('ready-to-refresh');
+            }
+            
+            pullDistance = 0;
+        };
+        
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, { passive: false });
+        document.addEventListener('touchend', handleTouchEnd, false);
+        
+        return {'triggered': false};
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["cf02d7261751e913fca39e9f9aba0409a5966ae2ce273c68d85a61772622bb3d"] = 
+    function(n_clicks) {
+        // Trigger haptic feedback if available
+        if ('vibrate' in navigator) {
+            navigator.vibrate(10); // Short vibration
+        }
+        
+        return {'trigger': n_clicks || 0};
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["8484b573d462264d8b241a612ca4b454afd7e46ed4fbb04b90817df35eb53e2f"] = 
+    function(n_intervals) {
+        const isOnline = navigator.onLine;
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        
+        let status = 'unknown';
+        let effectiveType = 'unknown';
+        
+        if (isOnline) {
+            if (connection) {
+                effectiveType = connection.effectiveType;
+                if (effectiveType === '4g' || effectiveType === 'wifi') {
+                    status = 'online';
+                } else if (effectiveType === '3g' || effectiveType === '2g') {
+                    status = 'slow';
+                } else {
+                    status = 'online';
+                }
+            } else {
+                status = 'online';
+            }
+        } else {
+            status = 'offline';
+        }
+        
+        return {
+            'status': status,
+            'effective_type': effectiveType,
+            'is_online': isOnline,
+            'timestamp': Date.now()
+        };
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["c4eaf91565bd7c2e1e51f7990882aea72a498a006d8e73c7a749c10860565426"] = 
+    function(connection_data) {
+        if (!connection_data) return [window.dash_clientside.no_update, window.dash_clientside.no_update, 'none'];
+        
+        const statusMap = {
+            'online': {icon: '🟢', text: 'Online'},
+            'offline': {icon: '🔴', text: 'Offline - Limited functionality'},
+            'slow': {icon: '🟡', text: 'Slow connection'},
+            'unknown': {icon: '🔘', text: 'Checking connection...'}
+        };
+        
+        const status = statusMap[connection_data.status] || statusMap['unknown'];
+        const display = connection_data.status === 'offline' || connection_data.status === 'slow' ? 'block' : 'none';
+        
+        return [status.icon, status.text, display];
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["45e714bfba2bd54b1554cab847296bc8dc85995d5b7d5f23a61b497d2cb20555"] = 
+    function(connection_data) {
+        if (!connection_data) return false;
+        return connection_data.status === 'offline';
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["0df0b1c8b284857c0de0c6aeb9c6808bd382f2ceff1fddd4cd119e8b9a66f9da"] = 
+    function(n_intervals) {
+        const now = new Date();
+        return now.toLocaleTimeString();
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["07514ca52756e6b81b9be78550c3e1fc719d0fc27550ae801e803314baf95462"] = 
+    function(n_intervals) {
+        const now = new Date();
+        return now.toLocaleString();
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["b4fa0e2089a92652ffb368fd9f9e72ba5f020cda9f6f71770eae43726ee54b28"] = 
+    function(n_intervals) {
+        const capabilities = {
+            serviceWorker: 'serviceWorker' in navigator,
+            installable: window.beforeInstallPrompt !== undefined,
+            offlineReady: 'serviceWorker' in navigator && navigator.serviceWorker.controller,
+            notifications: 'Notification' in window
+        };
+        
+        return capabilities;
+    }
+    ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["cd498dd44e0ba2bb7df6e625a1b174a9ebc5cf478261b8c632318ffbca0eeddb"] = 
+            function() {
+                const isMobile = window.innerWidth <= 768 || 
+                               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                
+                return {
+                    'is_mobile': isMobile,
+                    'viewport_width': window.innerWidth,
+                    'viewport_height': window.innerHeight,
+                    'touch_enabled': hasTouchScreen,
+                    'user_agent': navigator.userAgent,
+                    'pixel_ratio': window.devicePixelRatio || 1
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["549c6f6600c6b416f574d8a821514fc6f5e1d88da3dad9b5eadb07c444b592ff"] = 
+            function() {
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                                   window.navigator.standalone === true;
+                const canInstall = window.beforeInstallPrompt !== undefined;
+                
+                return {
+                    'can_install': canInstall,
+                    'is_installed': isStandalone,
+                    'prompt_shown': false,
+                    'timestamp': Date.now()
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["d4ddaebb6e1a33c8ac91c006ad5172c90ecaada3b3f111c6979efea6814f0684"] = 
+            function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                const paintData = performance.getEntriesByType('paint');
+                
+                let firstPaint = 0;
+                if (paintData.length > 0) {
+                    firstPaint = paintData[0].startTime;
+                }
+                
+                return {
+                    'load_time': perfData ? perfData.loadEventEnd - perfData.loadEventStart : 0,
+                    'interactive_time': perfData ? perfData.domInteractive - perfData.domLoading : 0,
+                    'first_paint': firstPaint,
+                    'dom_ready': perfData ? perfData.domContentLoadedEventEnd - perfData.domLoading : 0
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["c6d18872cb4365dabaeca009742263fce2d30d071c4d45e3e083e7582dab18be"] = 
+            function(mobile_context) {
+                if (!mobile_context) return window.dash_clientside.no_update;
+                
+                const mobileNav = document.querySelector('.mobile-only');
+                if (mobileNav) {
+                    if (mobile_context.is_mobile) {
+                        mobileNav.style.display = 'block';
+                    } else {
+                        mobileNav.style.display = 'none';
+                    }
+                }
+                
+                return window.dash_clientside.no_update;
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["cd498dd44e0ba2bb7df6e625a1b174a9ebc5cf478261b8c632318ffbca0eeddb"] = 
+            function() {
+                const isMobile = window.innerWidth <= 768 || 
+                               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                
+                return {
+                    'is_mobile': isMobile,
+                    'viewport_width': window.innerWidth,
+                    'viewport_height': window.innerHeight,
+                    'touch_enabled': hasTouchScreen,
+                    'user_agent': navigator.userAgent,
+                    'pixel_ratio': window.devicePixelRatio || 1
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["549c6f6600c6b416f574d8a821514fc6f5e1d88da3dad9b5eadb07c444b592ff"] = 
+            function() {
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                                   window.navigator.standalone === true;
+                const canInstall = window.beforeInstallPrompt !== undefined;
+                
+                return {
+                    'can_install': canInstall,
+                    'is_installed': isStandalone,
+                    'prompt_shown': false,
+                    'timestamp': Date.now()
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["d4ddaebb6e1a33c8ac91c006ad5172c90ecaada3b3f111c6979efea6814f0684"] = 
+            function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                const paintData = performance.getEntriesByType('paint');
+                
+                let firstPaint = 0;
+                if (paintData.length > 0) {
+                    firstPaint = paintData[0].startTime;
+                }
+                
+                return {
+                    'load_time': perfData ? perfData.loadEventEnd - perfData.loadEventStart : 0,
+                    'interactive_time': perfData ? perfData.domInteractive - perfData.domLoading : 0,
+                    'first_paint': firstPaint,
+                    'dom_ready': perfData ? perfData.domContentLoadedEventEnd - perfData.domLoading : 0
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["c6d18872cb4365dabaeca009742263fce2d30d071c4d45e3e083e7582dab18be"] = 
+            function(mobile_context) {
+                if (!mobile_context) return window.dash_clientside.no_update;
+                
+                const mobileNav = document.querySelector('.mobile-only');
+                if (mobileNav) {
+                    if (mobile_context.is_mobile) {
+                        mobileNav.style.display = 'block';
+                    } else {
+                        mobileNav.style.display = 'none';
+                    }
+                }
+                
+                return window.dash_clientside.no_update;
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["cd498dd44e0ba2bb7df6e625a1b174a9ebc5cf478261b8c632318ffbca0eeddb"] = 
+            function() {
+                const isMobile = window.innerWidth <= 768 || 
+                               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                
+                return {
+                    'is_mobile': isMobile,
+                    'viewport_width': window.innerWidth,
+                    'viewport_height': window.innerHeight,
+                    'touch_enabled': hasTouchScreen,
+                    'user_agent': navigator.userAgent,
+                    'pixel_ratio': window.devicePixelRatio || 1
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["549c6f6600c6b416f574d8a821514fc6f5e1d88da3dad9b5eadb07c444b592ff"] = 
+            function() {
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                                   window.navigator.standalone === true;
+                const canInstall = window.beforeInstallPrompt !== undefined;
+                
+                return {
+                    'can_install': canInstall,
+                    'is_installed': isStandalone,
+                    'prompt_shown': false,
+                    'timestamp': Date.now()
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["d4ddaebb6e1a33c8ac91c006ad5172c90ecaada3b3f111c6979efea6814f0684"] = 
+            function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                const paintData = performance.getEntriesByType('paint');
+                
+                let firstPaint = 0;
+                if (paintData.length > 0) {
+                    firstPaint = paintData[0].startTime;
+                }
+                
+                return {
+                    'load_time': perfData ? perfData.loadEventEnd - perfData.loadEventStart : 0,
+                    'interactive_time': perfData ? perfData.domInteractive - perfData.domLoading : 0,
+                    'first_paint': firstPaint,
+                    'dom_ready': perfData ? perfData.domContentLoadedEventEnd - perfData.domLoading : 0
+                };
+            }
+            ;
+})();
+</script>
+<script>
+(function() {
+    var clientside = window.dash_clientside = window.dash_clientside || {};
+    var ns = clientside["_dashprivate_clientside_funcs"] = clientside["_dashprivate_clientside_funcs"] || {};
+    ns["c6d18872cb4365dabaeca009742263fce2d30d071c4d45e3e083e7582dab18be"] = 
+            function(mobile_context) {
+                if (!mobile_context) return window.dash_clientside.no_update;
+                
+                const mobileNav = document.querySelector('.mobile-only');
+                if (mobileNav) {
+                    if (mobile_context.is_mobile) {
+                        mobileNav.style.display = 'block';
+                    } else {
+                        mobileNav.style.display = 'none';
+                    }
+                }
+                
+                return window.dash_clientside.no_update;
+            }
+            ;
+})();
+</script>
+            <script id="_dash-renderer" type="application/javascript">var renderer = new DashRenderer();</script>
+        </footer>
+    </body>
+</html>

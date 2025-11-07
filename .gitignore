@@ -88,3 +88,6 @@ monitoring/dashboards/*.json
 
 # Dart workspace configuration
 .dart
+
+# Claude-Flow
+.claude-flow/metrics/*.json

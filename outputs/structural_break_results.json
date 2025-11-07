@@ -1,0 +1,20 @@
+{
+  "analysis_date": "2025-11-07 04:22:02",
+  "data_source": "FRED PHXRNSA (Phoenix Home Price Index)",
+  "analysis_period": "2016-01-01 00:00:00 to 2024-12-01 00:00:00",
+  "total_observations": 108,
+  "stationarity_test": {
+    "adf_statistic": -2.2596835569730436,
+    "adf_pvalue": 0.18530056275418472,
+    "is_stationary": false
+  },
+  "breaks_detected": 5,
+  "break_dates": [
+    "2019-04-01",
+    "2020-05-01",
+    "2021-05-01",
+    "2022-11-01",
+    "2023-11-01"
+  ],
+  "regime_count": 6
+}
