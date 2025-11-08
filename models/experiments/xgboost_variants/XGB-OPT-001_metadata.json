@@ -1,0 +1,36 @@
+{
+  "experiment_id": "XGB-OPT-001",
+  "experiment_date": "2025-11-07_14-58-15",
+  "model_type": "XGBoost",
+  "features_count": 25,
+  "training_samples": 48,
+  "test_samples": 12,
+  "hyperparameters": {
+    "objective": "reg:squarederror",
+    "eval_metric": "rmse",
+    "booster": "gbtree",
+    "max_depth": 6,
+    "learning_rate": 0.05,
+    "n_estimators": 500,
+    "min_child_weight": 3,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "gamma": 0.1,
+    "reg_alpha": 0.1,
+    "reg_lambda": 0.1,
+    "random_state": 42
+  },
+  "performance_metrics": {
+    "test_rmse": 3.9510999917210605,
+    "test_mae": 3.652997789780299,
+    "test_r2": -16.23538698780385,
+    "directional_accuracy": 36.36363636363637
+  },
+  "top_5_features": [
+    "phx_employment_yoy_growth",
+    "phx_hpi_yoy_growth",
+    "vacancy_rate",
+    "absorption_12mo",
+    "phx_manufacturing_employment"
+  ]
+}

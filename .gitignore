@@ -90,4 +90,4 @@ monitoring/dashboards/*.json
 .dart
 
 # Claude-Flow
-.claude-flow/metrics/*.json
+.claude-flow/metrics/system-metrics.json

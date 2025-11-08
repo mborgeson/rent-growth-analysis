@@ -1,0 +1,26 @@
+{
+  "experiment_id": "VECM-COINT-001",
+  "experiment_date": "2025-11-07_14-58-59",
+  "model_type": "VECM",
+  "variables": [
+    "rent_growth_yoy",
+    "phx_employment_yoy_growth",
+    "units_under_construction",
+    "phx_hpi_yoy_growth"
+  ],
+  "lag_order": 8,
+  "cointegration_rank": 4,
+  "training_period": "2011-03-31 00:00:00 to 2022-12-31 00:00:00",
+  "test_period": "2022-12-31 00:00:00 to 2025-09-30 00:00:00",
+  "performance_metrics": {
+    "test_rmse": 35.77622773598667,
+    "test_mae": 25.205089571932472,
+    "directional_accuracy": 54.54545454545454
+  },
+  "error_correction_coefficients": {
+    "rent_growth_yoy": -0.39751860623368357,
+    "phx_employment_yoy_growth": 1.9359742229413817,
+    "units_under_construction": 3828.076777570753,
+    "phx_hpi_yoy_growth": -1.7711078138742233
+  }
+}

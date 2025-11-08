@@ -1,0 +1,88 @@
+{
+  "experiment_id": "ENSEMBLE-EXP-004",
+  "description": "StandardScaler ablation study - same as EXP-003 but WITHOUT scaling",
+  "date": "2025-11-07",
+  "key_change": "Removed StandardScaler from LightGBM features",
+  "architecture": {
+    "component_1": "LightGBM (NO SCALING)",
+    "component_2": "SARIMA (Pure)",
+    "meta_learner": "Ridge Regression"
+  },
+  "features": {
+    "count": 26,
+    "stable_p05": 2,
+    "stable_p01": 2,
+    "stability_rate_p05": 0.07692307692307693
+  },
+  "lightgbm": {
+    "algorithm": "LightGBM",
+    "n_features": 26,
+    "scaling": "NONE (key change from EXP-003)",
+    "hyperparameters": {
+      "n_estimators": 1000,
+      "num_leaves": 31,
+      "max_depth": 6,
+      "learning_rate": 0.05,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "reg_alpha": 0.1,
+      "reg_lambda": 0.1,
+      "min_child_samples": 10,
+      "random_state": 42,
+      "verbosity": -1
+    },
+    "train_rmse": 0.1096468375832687,
+    "train_r2": 0.9992055674662951,
+    "test_rmse": 3.7369001390715053,
+    "test_r2": -30.430341156557088,
+    "prediction_std": 0.5725639346661274
+  },
+  "sarima": {
+    "type": "Pure SARIMA (no exogenous)",
+    "order": [
+      2,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      0,
+      0,
+      1,
+      4
+    ],
+    "aic": 118.61790980474046,
+    "train_rmse": 1.493068173482199,
+    "train_r2": 0.8526927654005128,
+    "test_rmse": 15.607259694631717,
+    "test_r2": -547.2509891416809
+  },
+  "ridge_meta": {
+    "alpha": 1.0,
+    "weights": {
+      "lightgbm": 0.9936797148239808,
+      "sarima": 0.005398570964745674,
+      "intercept": 0.006223573255738302
+    },
+    "normalized_pct": {
+      "lightgbm": 99.459644850505,
+      "sarima": 0.5403551494949917
+    },
+    "negative_coefficients": 0
+  },
+  "ensemble_performance": {
+    "test_rmse": 3.761145230868662,
+    "test_mae": 3.6346209634530244,
+    "test_r2": -30.839505713727974,
+    "directional_accuracy": 60.0,
+    "improvement_vs_best_component": -0.6488022396868414
+  },
+  "comparison": {
+    "production_rmse": 0.5046,
+    "exp001_rmse": 3.8113,
+    "exp002_rmse": 6.6447,
+    "exp003_rmse": 0.5936,
+    "exp004_rmse": 3.761145230868662,
+    "improvement_vs_exp003_pct": -533.6161103215401
+  }
+}

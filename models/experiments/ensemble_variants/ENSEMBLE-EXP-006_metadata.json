@@ -1,0 +1,99 @@
+{
+  "experiment_id": "ENSEMBLE-EXP-006",
+  "description": "Feature set alignment test - production 26-feature set with regime detection",
+  "date": "2025-11-08",
+  "key_change": "Using production EXACT 26-feature set (added 8 regime detection features)",
+  "architecture": {
+    "component_1": "LightGBM (lgb.train + early stopping)",
+    "component_2": "SARIMA (Pure)",
+    "meta_learner": "Ridge Regression"
+  },
+  "features": {
+    "count": 26,
+    "production_match": true,
+    "new_regime_features": [
+      "fed_funds_rate",
+      "national_unemployment",
+      "cpi",
+      "cap_rate",
+      "phx_home_price_index",
+      "phx_hpi_yoy_growth",
+      "phx_manufacturing_employment",
+      "vacancy_rate"
+    ]
+  },
+  "lightgbm": {
+    "algorithm": "LightGBM (lgb.train)",
+    "n_features": 26,
+    "early_stopping": true,
+    "stopping_rounds": 50,
+    "best_iteration": 384,
+    "hyperparameters": {
+      "objective": "regression",
+      "metric": "rmse",
+      "boosting_type": "gbdt",
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "max_depth": 6,
+      "min_data_in_leaf": 10,
+      "lambda_l1": 0.1,
+      "lambda_l2": 0.1,
+      "verbose": -1
+    },
+    "train_rmse": 0.40676664234160165,
+    "train_r2": 0.9868356574942239,
+    "test_rmse": 3.4294785443023112,
+    "test_r2": -0.9465819283424006,
+    "train_test_ratio": 8.431071251467674
+  },
+  "sarima": {
+    "type": "Pure SARIMA (no exogenous)",
+    "order": [
+      2,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      1,
+      1,
+      1,
+      4
+    ],
+    "aic": 108.4063649883948,
+    "train_rmse": 0.8889488272182551,
+    "train_r2": 0.937127311072903,
+    "test_rmse": 52.21663208631934,
+    "test_r2": -450.26767000583914
+  },
+  "ridge_meta": {
+    "alpha": 0.001,
+    "weights": {
+      "lightgbm": 0.7846218987254489,
+      "sarima": 0.23513646993367154,
+      "intercept": -0.07560425636605661
+    },
+    "normalized_pct": {
+      "lightgbm": 76.94194260520241,
+      "sarima": 23.058057394797586
+    }
+  },
+  "ensemble_performance": {
+    "test_rmse": 12.892960681459623,
+    "test_mae": 10.34332418944136,
+    "test_r2": -26.5119784948068,
+    "directional_accuracy": 33.33333333333333,
+    "improvement_vs_best_component": 275.94522067734795
+  },
+  "comparison": {
+    "production_rmse": 0.5046,
+    "exp003_rmse": 0.5936,
+    "exp005_rmse": 6.5338,
+    "exp006_rmse": 12.892960681459623,
+    "gap_to_production_pct": 2455.0853510621528,
+    "improvement_vs_exp003_pct": 2071.99472396557,
+    "improvement_vs_exp005_pct": 97.32714012457716
+  }
+}

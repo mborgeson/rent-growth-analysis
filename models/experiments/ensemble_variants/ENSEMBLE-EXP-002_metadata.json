@@ -1,0 +1,91 @@
+{
+  "experiment_id": "ENSEMBLE-EXP-002",
+  "date": "2025-11-07",
+  "improvements": {
+    "tiered_feature_selection": true,
+    "var_component": true,
+    "num_features": 5,
+    "num_components": 4
+  },
+  "architecture": {
+    "components": [
+      "XGBoost",
+      "LightGBM",
+      "SARIMA",
+      "VAR"
+    ],
+    "meta_learner": "RidgeCV",
+    "features_by_tier": {
+      "tier1": 2,
+      "tier2": 2,
+      "tier3": 1
+    }
+  },
+  "component_performance": {
+    "xgb": {
+      "train_rmse": 0.4154936924203285,
+      "train_r2": 0.9885924161204744,
+      "test_rmse": 7.729454868040902,
+      "test_r2": -64.96031624794674
+    },
+    "lgbm": {
+      "train_rmse": 2.6954907196393094,
+      "train_r2": 0.5198902979168902,
+      "test_rmse": 7.084831597083677,
+      "test_r2": -54.41713395155313
+    },
+    "sarima": {
+      "train_rmse": 1.3952254803654742,
+      "train_r2": 0.8713666445809034,
+      "test_rmse": 8.708962674913822,
+      "test_r2": -82.73708844374812
+    },
+    "var": {
+      "train_rmse": 5.009316705062321,
+      "train_r2": -0.6581422314480512,
+      "test_rmse": 7.850200572547101,
+      "test_r2": -67.03721122600255
+    }
+  },
+  "ensemble_performance": {
+    "train_rmse": 0.3798487690034898,
+    "train_mae": 0.2729092296316718,
+    "train_r2": 0.9904657563320662,
+    "train_directional_accuracy": 82.35294117647058,
+    "test_rmse": 6.644686486976682,
+    "test_mae": 6.218640653345837,
+    "test_r2": -47.745439128040445,
+    "test_directional_accuracy": 36.36363636363637
+  },
+  "meta_learner": {
+    "best_alpha": 1.0,
+    "coefficients": {
+      "XGBoost": 0.9664924908581382,
+      "LightGBM": -0.020261421134101062,
+      "SARIMA": 0.07523342060595285,
+      "VAR": 0.05493705940103809
+    },
+    "intercept": -0.41416607553023166,
+    "normalized_weights": {
+      "XGBoost": 86.53159495676984,
+      "LightGBM": 1.8140369463893868,
+      "SARIMA": 6.735766641400801,
+      "VAR": 4.918601455439962
+    }
+  },
+  "comparison": {
+    "production_ensemble_rmse": 0.5046,
+    "exp_001_rmse": 3.8113,
+    "xgb_opt_002_rmse": 4.2058,
+    "improvement_vs_exp001_pct": -74.34173344991689,
+    "improvement_vs_xgb_pct": -57.98864632119174,
+    "gap_to_production_pct": 1216.8225301182486
+  },
+  "success_criteria": {
+    "target_rmse_threshold": 2.5,
+    "target_r2_threshold": -5.0,
+    "rmse_met": false,
+    "r2_met": false,
+    "overall_success": false
+  }
+}

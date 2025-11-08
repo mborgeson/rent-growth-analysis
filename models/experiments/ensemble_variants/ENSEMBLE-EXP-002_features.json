@@ -1,0 +1,30 @@
+{
+  "selected_features": [
+    "phx_employment_yoy_growth",
+    "migration_proxy",
+    "mortgage_employment_interaction",
+    "absorption_inventory_ratio",
+    "absorption_12mo"
+  ],
+  "num_features": 5,
+  "tier1_features": [
+    "phx_employment_yoy_growth",
+    "migration_proxy"
+  ],
+  "tier2_features": [
+    "mortgage_employment_interaction",
+    "absorption_inventory_ratio"
+  ],
+  "tier3_features": [
+    "absorption_12mo"
+  ],
+  "exog_features": [
+    "phx_employment_yoy_growth",
+    "migration_proxy"
+  ],
+  "var_features": [
+    "national_unemployment",
+    "mortgage_rate_30yr",
+    "inflation_expectations_5yr"
+  ]
+}

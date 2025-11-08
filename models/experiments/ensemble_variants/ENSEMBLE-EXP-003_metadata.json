@@ -1,0 +1,85 @@
+{
+  "experiment_id": "ENSEMBLE-EXP-003",
+  "description": "Production ensemble replication with 25 features + pure SARIMA",
+  "date": "2025-11-07",
+  "architecture": {
+    "component_1": "LightGBM",
+    "component_2": "SARIMA (Pure)",
+    "meta_learner": "Ridge Regression"
+  },
+  "features": {
+    "count": 26,
+    "stable_p05": 3,
+    "stable_p01": 3,
+    "stability_rate_p05": 0.11538461538461539
+  },
+  "lightgbm": {
+    "algorithm": "LightGBM",
+    "n_features": 26,
+    "hyperparameters": {
+      "n_estimators": 1000,
+      "num_leaves": 31,
+      "max_depth": 6,
+      "learning_rate": 0.05,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "reg_alpha": 0.1,
+      "reg_lambda": 0.1,
+      "min_child_samples": 10,
+      "random_state": 42,
+      "verbosity": -1
+    },
+    "train_rmse": 3.322436918617514,
+    "train_r2": 0.12174223166795906,
+    "test_rmse": 5.994005413696231,
+    "test_r2": -79.86495924162551
+  },
+  "sarima": {
+    "type": "Pure SARIMA (no exogenous)",
+    "order": [
+      2,
+      1,
+      2
+    ],
+    "seasonal_order": [
+      1,
+      1,
+      1,
+      4
+    ],
+    "aic": 108.4063649883948,
+    "train_rmse": 0.8889488272182551,
+    "train_r2": 0.937127311072903,
+    "test_rmse": 16.908109979206618,
+    "test_r2": -642.4521233508653
+  },
+  "ridge_meta": {
+    "alpha": 100.0,
+    "weights": {
+      "lightgbm": 0.0,
+      "sarima": 0.02449987925963732,
+      "intercept": -1.823880183271901
+    },
+    "normalized_pct": {
+      "lightgbm": 0.0,
+      "sarima": 100.0
+    },
+    "negative_coefficients": 0
+  },
+  "ensemble_performance": {
+    "test_rmse": 0.5935641741004596,
+    "test_mae": 0.43379886381621185,
+    "test_r2": 0.2070213935669114,
+    "directional_accuracy": 60.0,
+    "improvement_vs_best_component": 90.0973700700341
+  },
+  "comparison": {
+    "production_rmse": 0.5046,
+    "exp001_rmse": 3.8113,
+    "exp002_rmse": 6.6447,
+    "exp003_rmse": 0.5935641741004596,
+    "improvement_vs_exp001_pct": 84.42620171331411,
+    "improvement_vs_exp002_pct": 91.06710349450752
+  }
+}

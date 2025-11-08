@@ -1,0 +1,47 @@
+ENSEMBLE COMPONENT ANALYSIS INSIGHTS
+================================================================================
+
+KEY INSIGHTS:
+----------------------------------------
+1. ⚠️  GBM has negative R² in test period but better than experimental models
+2. ℹ️  SARIMA struggles but provides diversification
+3. ✅ Ensemble 87.7% better than best component (diversification benefit)
+4. 🎯 Ensemble 88.0% better than experimental XGBoost
+5. ℹ️  Ridge meta-learner heavily weights SARIMA (87.7%) - relies on seasonality
+
+
+LESSONS LEARNED:
+----------------------------------------
+1. Component Diversity: Use multiple model types (tree-based, time series, etc.) to capture different aspects of regime dynamics
+2. Adaptive Meta-Learning: Ridge regression learns optimal weights automatically rather than fixed weights
+3. Simpler Components: Individual GBM/SARIMA components may be simpler than experimental XGBoost (25 features)
+4. Feature Stability: GBM likely uses Phoenix-specific features that maintain relationships across regimes (employment YoY growth)
+5. Regularization: Ridge regression provides implicit regularization, preventing overfitting to any single component
+
+
+RECOMMENDATIONS:
+----------------------------------------
+
+[HIGH] Implement Ensemble Architecture
+  Use ensemble of diverse models rather than single complex model
+  Action: Create XGBoost + SARIMA + LightGBM ensemble with Ridge meta-learner
+
+[HIGH] Simplify Feature Sets
+  Reduce from 25 to 5-10 most stable features
+  Action: Focus on employment_yoy_growth and seasonality-stable features
+
+[HIGH] Add Seasonal Component
+  SARIMA captures patterns that remain stable across regimes
+  Action: Implement SARIMAX experimental variant
+
+[MEDIUM] Adaptive Weighting
+  Let meta-learner adjust weights based on recent performance
+  Action: Implement Ridge or elastic net meta-learner
+
+[MEDIUM] Component Specialization
+  Different models capture different regime aspects
+  Action: XGBoost for Phoenix dynamics, SARIMA for seasonality, VAR for macro
+
+[LOWER] Online Learning
+  Update weights as new data arrives
+  Action: Implement rolling window meta-learner retraining

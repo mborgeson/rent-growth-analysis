@@ -1,0 +1,8 @@
+{
+  "xgb_features": [
+    "phx_employment_yoy_growth",
+    "migration_proxy"
+  ],
+  "exog_feature": "phx_employment_yoy_growth",
+  "num_features": 2
+}

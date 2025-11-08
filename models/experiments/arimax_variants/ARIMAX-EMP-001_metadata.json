@@ -1,0 +1,35 @@
+{
+  "experiment_id": "ARIMAX-EMP-001",
+  "experiment_date": "2025-11-07_14-59-44",
+  "model_type": "ARIMAX",
+  "arima_order": [
+    2,
+    1,
+    3
+  ],
+  "exogenous_variables": [
+    "phx_employment_yoy_growth",
+    "units_under_construction_lag8",
+    "vacancy_rate"
+  ],
+  "training_period": "2010-03-31 00:00:00 to 2022-12-31 00:00:00",
+  "test_period": "2022-12-31 00:00:00 to 2025-09-30 00:00:00",
+  "performance_metrics": {
+    "test_rmse": 5.143509259861174,
+    "test_mae": 4.646262291925556,
+    "test_r2": -28.208149972429506,
+    "directional_accuracy": 18.181818181818183,
+    "improvement_vs_naive": -772.8189909817879
+  },
+  "model_diagnostics": {
+    "aic": 148.34641373996482,
+    "bic": 164.99774215535535,
+    "log_likelihood": -65.17320686998241
+  },
+  "key_findings": {
+    "employment_coefficient": 0.342957471669891,
+    "employment_pvalue": 1.200086524391981e-05,
+    "construction_coefficient": 8.507115162443806e-05,
+    "vacancy_coefficient": -1.4999060729252016
+  }
+}
