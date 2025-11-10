@@ -1,0 +1,68 @@
+{
+  "email_settings": {
+    "enabled": false,
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "use_tls": true,
+    "from_email": "forecast-alerts@yourcompany.com",
+    "from_name": "Phoenix Forecast Alerts",
+    "username": "your-email@gmail.com",
+    "password": "your-app-password-here",
+    "recipients": [
+      "analyst1@yourcompany.com",
+      "analyst2@yourcompany.com"
+    ],
+    "alert_threshold": {
+      "send_on_success": false,
+      "send_on_warnings": true,
+      "send_on_critical": true,
+      "min_alerts_to_send": 1
+    },
+    "email_format": {
+      "subject_prefix": "[Phoenix Forecast]",
+      "include_logs_attachment": false,
+      "include_forecast_summary": true
+    }
+  },
+  "notification_rules": {
+    "data_quality_alerts": true,
+    "model_validation_alerts": true,
+    "forecast_revision_alerts": true,
+    "accuracy_degradation_alerts": true
+  },
+  "instructions": {
+    "setup": [
+      "1. Copy this file to 'email_config.json' in the same directory",
+      "2. Update smtp_server, smtp_port based on your email provider",
+      "3. Set from_email and username to your email address",
+      "4. For Gmail: Generate an App Password at https://myaccount.google.com/apppasswords",
+      "5. Update password with your App Password (not your regular password)",
+      "6. Add recipient email addresses to the recipients list",
+      "7. Set enabled: true when ready to activate",
+      "8. Test with: python3 scripts/email_alerts.py --test"
+    ],
+    "providers": {
+      "Gmail": {
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "use_tls": true,
+        "note": "Requires App Password (not regular password)"
+      },
+      "Outlook/Office365": {
+        "smtp_server": "smtp-mail.outlook.com",
+        "smtp_port": 587,
+        "use_tls": true
+      },
+      "Yahoo": {
+        "smtp_server": "smtp.mail.yahoo.com",
+        "smtp_port": 587,
+        "use_tls": true
+      },
+      "Custom SMTP": {
+        "smtp_server": "your-smtp-server.com",
+        "smtp_port": 587,
+        "use_tls": true
+      }
+    }
+  }
+}

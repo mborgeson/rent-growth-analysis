@@ -1,0 +1,78 @@
+{
+  "color_scheme": {
+    "primary": "#2E86AB",
+    "secondary": "#A23B72",
+    "success": "#06A77D",
+    "warning": "#F18F01",
+    "danger": "#C73E1D",
+    "info": "#6C757D"
+  },
+  "chart_settings": {
+    "figsize": [14, 10],
+    "dpi": 100,
+    "style": "seaborn-v0_8-darkgrid",
+    "font_size": 10
+  },
+  "confidence_intervals": {
+    "enabled": true,
+    "levels": [50, 80, 95],
+    "alpha": [0.4, 0.3, 0.2],
+    "description": "Confidence interval settings for forecast uncertainty visualization"
+  },
+  "interactive_charts": {
+    "enabled": true,
+    "template": "plotly_white",
+    "export_html": true,
+    "export_png": false,
+    "description": "Interactive chart settings using Plotly (requires: pip install plotly)"
+  },
+  "chart_types": {
+    "confidence_intervals": {
+      "enabled": true,
+      "description": "Show forecast uncertainty with confidence bands"
+    },
+    "scenario_comparison": {
+      "enabled": true,
+      "description": "Compare multiple forecast scenarios (best/worst/base case)"
+    },
+    "component_analysis": {
+      "enabled": true,
+      "description": "Visualize model component contributions"
+    },
+    "heat_map": {
+      "enabled": false,
+      "description": "Show forecast evolution over time (requires historical forecasts)"
+    },
+    "interactive_dashboard": {
+      "enabled": true,
+      "description": "Interactive HTML dashboard with multiple visualizations"
+    }
+  },
+  "export_settings": {
+    "create_report_directory": true,
+    "include_timestamp": true,
+    "png_dpi": 300,
+    "save_formats": ["png", "html"],
+    "description": "Control how visualization outputs are saved"
+  },
+  "instructions": {
+    "setup": [
+      "1. Copy this file to 'visualization_config.json' in the same directory",
+      "2. Adjust color scheme to match your branding (hex color codes)",
+      "3. Enable/disable chart types based on your needs",
+      "4. For interactive charts, install plotly: pip install plotly",
+      "5. Test with: python3 scripts/visualizations.py --test"
+    ],
+    "usage_examples": {
+      "generate_demo": "python3 scripts/visualizations.py --demo",
+      "test_config": "python3 scripts/visualizations.py --test",
+      "programmatic_usage": "from visualizations import ForecastVisualizer; viz = ForecastVisualizer(); viz.generate_comprehensive_report(...)"
+    },
+    "customization": {
+      "colors": "Modify 'color_scheme' to match your organization's branding",
+      "chart_size": "Adjust 'figsize' for larger/smaller charts (width, height in inches)",
+      "resolution": "Change 'dpi' for higher/lower resolution exports",
+      "style": "Options: 'seaborn-v0_8-darkgrid', 'seaborn-v0_8-whitegrid', 'ggplot', 'bmh'"
+    }
+  }
+}
