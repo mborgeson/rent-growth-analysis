@@ -1,0 +1,89 @@
+{
+  "data_sources": {
+    "primary": "data/processed/phoenix_modeling_dataset.csv",
+    "backup": null,
+    "description": "Primary data source is preprocessed modeling dataset. Set backup for failover."
+  },
+  "data_quality_checks": {
+    "max_missing_percentage": 30.0,
+    "max_duplicate_dates": 0,
+    "min_data_points": 30,
+    "extreme_value_threshold": 30.0,
+    "required_columns": [
+      "period",
+      "market_name",
+      "rent_growth_yoy"
+    ],
+    "descriptions": {
+      "max_missing_percentage": "Maximum percentage of missing values allowed in rent_growth_yoy",
+      "max_duplicate_dates": "Maximum number of duplicate date entries (should be 0)",
+      "min_data_points": "Minimum quarterly data points required for forecasting",
+      "extreme_value_threshold": "Absolute rent growth value (%) considered extreme",
+      "required_columns": "Columns that must exist in the data file"
+    }
+  },
+  "update_detection": {
+    "enabled": true,
+    "check_file_modified_time": true,
+    "check_new_quarters": true,
+    "expected_update_frequency_days": 90,
+    "descriptions": {
+      "enabled": "Enable automatic update detection",
+      "check_file_modified_time": "Alert if file hasn't been modified in expected timeframe",
+      "check_new_quarters": "Alert if latest data is more than 1.5 quarters old",
+      "expected_update_frequency_days": "Expected days between CoStar data updates (90 = quarterly)"
+    }
+  },
+  "data_transformations": {
+    "date_column": "period",
+    "date_format": "%Y-%m-%d",
+    "sort_by_date": true,
+    "filter_market": "Phoenix",
+    "descriptions": {
+      "date_column": "Column name containing date/period information",
+      "date_format": "Python datetime format string for parsing dates",
+      "sort_by_date": "Sort data chronologically",
+      "filter_market": "Filter to specific market (set to null to include all markets)"
+    }
+  },
+  "instructions": {
+    "setup": [
+      "1. Copy this file to 'data_pipeline_config.json' in the same directory",
+      "2. Verify 'primary' data source path is correct for your setup",
+      "3. Adjust quality thresholds based on your data characteristics",
+      "4. Test with: python3 scripts/data_pipeline.py --validate",
+      "5. Check for updates with: python3 scripts/data_pipeline.py --check-updates"
+    ],
+    "usage": {
+      "validate_data": "python3 scripts/data_pipeline.py --validate",
+      "check_updates": "python3 scripts/data_pipeline.py --check-updates",
+      "get_summary": "python3 scripts/data_pipeline.py --summary",
+      "custom_file": "python3 scripts/data_pipeline.py --validate --file /path/to/data.csv"
+    },
+    "customization": {
+      "strict_quality": {
+        "description": "For production environments requiring high data quality",
+        "changes": {
+          "max_missing_percentage": 10.0,
+          "max_duplicate_dates": 0,
+          "min_data_points": 40,
+          "extreme_value_threshold": 20.0
+        }
+      },
+      "lenient_quality": {
+        "description": "For development or volatile markets",
+        "changes": {
+          "max_missing_percentage": 50.0,
+          "extreme_value_threshold": 50.0,
+          "min_data_points": 20
+        }
+      },
+      "monthly_updates": {
+        "description": "If data is updated monthly instead of quarterly",
+        "changes": {
+          "expected_update_frequency_days": 30
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "validation_thresholds": {
+    "sarima_max_prediction": {
+      "value": 10.0,
+      "description": "Maximum SARIMA prediction (%) before flagging as explosive",
+      "alert_severity": "CRITICAL",
+      "recommendation": "Increase if stable >10% growth expected, decrease for stricter validation"
+    },
+    "component_correlation_min": {
+      "value": -0.5,
+      "description": "Minimum acceptable correlation between LightGBM and SARIMA components",
+      "alert_severity": "WARNING",
+      "recommendation": "Adjust based on regime shifts; lower values indicate diverging predictions"
+    },
+    "test_train_rmse_ratio": {
+      "value": 2.0,
+      "description": "Maximum acceptable ratio of test RMSE to train RMSE (overfitting detection)",
+      "alert_severity": "WARNING",
+      "recommendation": "Decrease for stricter overfitting detection, increase if expecting regime shift"
+    },
+    "ridge_alpha_min": {
+      "value": 1.0,
+      "description": "Minimum Ridge regression alpha for adequate regularization",
+      "alert_severity": "WARNING",
+      "recommendation": "Increase for stronger regularization (e.g., 10.0 for production)"
+    },
+    "forecast_revision_alert": {
+      "value": 1.0,
+      "description": "Forecast revision threshold (percentage points) to trigger alert",
+      "alert_severity": "WARNING",
+      "recommendation": "Decrease for more sensitive revision alerts, increase for less frequent alerts"
+    }
+  },
+  "data_quality_thresholds": {
+    "max_missing_percentage": {
+      "value": 30.0,
+      "description": "Maximum percentage of missing values allowed per feature",
+      "alert_severity": "WARNING",
+      "recommendation": "Decrease for stricter data quality requirements"
+    },
+    "max_duplicate_dates": {
+      "value": 0,
+      "description": "Maximum number of duplicate dates allowed in dataset",
+      "alert_severity": "CRITICAL",
+      "recommendation": "Should always be 0; duplicates indicate data issues"
+    },
+    "extreme_value_threshold": {
+      "value": 30.0,
+      "description": "Absolute rent growth value (%) considered extreme",
+      "alert_severity": "WARNING",
+      "recommendation": "Adjust based on expected market volatility"
+    }
+  },
+  "model_performance_thresholds": {
+    "min_directional_accuracy": {
+      "value": 50.0,
+      "description": "Minimum directional accuracy (%) for acceptable model performance",
+      "alert_severity": "WARNING",
+      "recommendation": "May be lower during regime shifts; 50%+ expected in stable periods"
+    },
+    "max_test_rmse": {
+      "value": 10.0,
+      "description": "Maximum acceptable test RMSE for model validation",
+      "alert_severity": "WARNING",
+      "recommendation": "Adjust based on historical volatility and forecast horizon"
+    },
+    "min_r2_score": {
+      "value": -50.0,
+      "description": "Minimum R² score for model validation (negative OK during regime shifts)",
+      "alert_severity": "INFO",
+      "recommendation": "Negative R² indicates regime shift; monitor but don't fail validation"
+    }
+  },
+  "forecast_quality_thresholds": {
+    "min_forecast_periods": {
+      "value": 1,
+      "description": "Minimum number of periods to forecast",
+      "alert_severity": "WARNING",
+      "recommendation": "Should match business requirements (e.g., 12 for 3 years quarterly)"
+    },
+    "max_forecast_std": {
+      "value": 5.0,
+      "description": "Maximum standard deviation (%) across forecast periods",
+      "alert_severity": "WARNING",
+      "recommendation": "High std indicates unstable forecast; investigate model components"
+    },
+    "forecast_range_max": {
+      "value": 15.0,
+      "description": "Maximum range (max - min, %) across forecast periods",
+      "alert_severity": "INFO",
+      "recommendation": "Wide range may indicate growth acceleration/deceleration"
+    }
+  },
+  "alert_configuration": {
+    "enable_data_quality_alerts": true,
+    "enable_model_validation_alerts": true,
+    "enable_forecast_revision_alerts": true,
+    "enable_performance_alerts": true,
+    "alert_aggregation": {
+      "enabled": true,
+      "description": "Group similar alerts to reduce email noise"
+    }
+  },
+  "instructions": {
+    "setup": [
+      "1. Copy this file to 'validation_thresholds.json' in the same directory",
+      "2. Adjust threshold values based on your market expectations",
+      "3. Review 'recommendation' field for guidance on each threshold",
+      "4. Test changes with: python3 scripts/automated_monthly_forecast_update.py --force-retrain",
+      "5. Monitor alert frequency and adjust thresholds as needed"
+    ],
+    "customization_examples": {
+      "high_growth_market": {
+        "description": "For markets expecting sustained high growth (>10%)",
+        "changes": {
+          "sarima_max_prediction": 15.0,
+          "extreme_value_threshold": 40.0
+        }
+      },
+      "volatile_market": {
+        "description": "For markets with high volatility and regime shifts",
+        "changes": {
+          "component_correlation_min": -0.7,
+          "test_train_rmse_ratio": 3.0,
+          "forecast_revision_alert": 2.0
+        }
+      },
+      "conservative_validation": {
+        "description": "Stricter validation for production deployment",
+        "changes": {
+          "ridge_alpha_min": 10.0,
+          "test_train_rmse_ratio": 1.5,
+          "max_missing_percentage": 10.0
+        }
+      }
+    }
+  }
+}

@@ -150,8 +150,8 @@ class DataPipeline:
             else:
                 raise FileNotFoundError(f"Data file not found: {data_file}")
 
-        # Load CSV
-        df = pd.read_csv(data_file)
+        # Load CSV with date parsing
+        df = pd.read_csv(data_file, parse_dates=['date'])
         self.log(f"✅ Loaded {len(df)} rows, {len(df.columns)} columns")
 
         return df
