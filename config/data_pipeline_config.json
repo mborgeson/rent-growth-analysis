@@ -35,7 +35,7 @@
     }
   },
   "data_transformations": {
-    "date_column": "period",
+    "date_column": "date",
     "date_format": "%Y-%m-%d",
     "sort_by_date": true,
     "filter_market": "Phoenix",
