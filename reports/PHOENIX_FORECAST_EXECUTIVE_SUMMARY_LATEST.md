@@ -1,6 +1,6 @@
 # Phoenix Rent Growth Forecast Update
 
-**Forecast Date**: 2025-11-08
+**Forecast Date**: 2025-11-10
 **Model**: Production-Validated Ensemble (LightGBM + SARIMA + Ridge)
 
 ---
@@ -57,4 +57,4 @@
 
 ---
 
-**Auto-generated**: 2025-11-08 09:05:14
+**Auto-generated**: 2025-11-10 22:11:13

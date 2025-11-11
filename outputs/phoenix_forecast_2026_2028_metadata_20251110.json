@@ -1,0 +1,76 @@
+{
+  "forecast_date": "2025-11-10T22:11:09.842514",
+  "forecast_periods": 20,
+  "date_range": {
+    "start": "2026-03-31T00:00:00",
+    "end": "2030-12-31T00:00:00"
+  },
+  "ensemble_predictions": {
+    "mean": 2.03508437924991,
+    "min": 1.8965016107786554,
+    "max": 2.5768486766377485,
+    "std": 0.20944078926784768
+  },
+  "configuration": {
+    "sarima": {
+      "order": [
+        1,
+        1,
+        2
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "explanation": "Production configuration - avoids explosive predictions"
+    },
+    "lightgbm": {
+      "objective": "regression",
+      "metric": "rmse",
+      "boosting_type": "gbdt",
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 5,
+      "max_depth": 6,
+      "min_data_in_leaf": 10,
+      "lambda_l1": 0.1,
+      "lambda_l2": 0.1,
+      "verbose": -1
+    },
+    "ridge": {
+      "alphas": [
+        0.1,
+        1.0,
+        10.0,
+        100.0,
+        1000.0
+      ],
+      "cv": 5,
+      "explanation": "Production likely uses alpha=10.0 for strong regularization"
+    },
+    "early_stopping": {
+      "rounds": 50,
+      "explanation": "Critical for preventing overfitting"
+    },
+    "validation_thresholds": {
+      "sarima_max_prediction": 10.0,
+      "component_correlation_min": -0.5,
+      "test_train_rmse_ratio": 2.0,
+      "ridge_alpha_min": 1.0,
+      "forecast_revision_alert": 1.0,
+      "max_missing_percentage": 30.0,
+      "max_duplicate_dates": 0,
+      "extreme_value_threshold": 30.0,
+      "min_directional_accuracy": 50.0,
+      "max_test_rmse": 10.0,
+      "min_r2_score": -50.0,
+      "min_forecast_periods": 1,
+      "max_forecast_std": 5.0,
+      "forecast_range_max": 15.0
+    }
+  }
+}
